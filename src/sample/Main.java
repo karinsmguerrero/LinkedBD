@@ -1,5 +1,6 @@
 package sample;
 
+import data.structures.SimpleList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,7 +39,12 @@ public class Main extends Application {
         layoutLeft = new VBox();
         TreeItem<String> treeRoot = new TreeItem<>();
         treeRoot.setExpanded(true);
+        treeMenu = new TreeView<String>(treeRoot);
         layoutLeft.getChildren().addAll(treeMenu);
+
+        //here region
+        //region
+
 
         /*TreeItem<String> root, bucky, megan;
 
@@ -70,6 +76,8 @@ public class Main extends Application {
         StackPane layout = new StackPane();
 layout.getChildren().add(tree);*/
 
+        //endregion
+
         layout = new BorderPane();
         layout.setTop(layoutTop);
         layout.setLeft(layoutLeft);
@@ -85,8 +93,23 @@ layout.getChildren().add(tree);*/
         System.out.println("opended");
     }
 
-
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+        int[] vec = {1,2,3};
+        SimpleList list = new SimpleList();
+        list.addNode(vec);
+        list.addNode(2.3);
+        list.addNode("Holiwis");
+        list.addNode(4);
+        list.addNode(5);
+        System.out.println("-----");
+        list.printList();
+        list.deleteNode(0);
+        System.out.println("-----");
+        list.printList();
+        list.deleteNode(2);
+        System.out.println("-----");
+        list.printList();
+
     }
 }

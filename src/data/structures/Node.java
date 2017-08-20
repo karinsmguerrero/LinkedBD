@@ -1,15 +1,42 @@
 package data.structures;
 
 public class Node {
-    int value;
-    Node next;
-    Node previous;
+    private Object value;
+    private Node next;
+    private Node previous;
 
-    public Node (int value)
+    public Node(Object value){
+        this(value, null, null);
+    }
+
+    public Node (Object value, Node previous, Node next)
     {
         this.value = value;
-        this.previous = null;
-        this.next = null;
+        this.previous = previous;
+        this.next = next;
+    }
 
+    public Node getNext() {
+        return next;
+    }
+
+    public Node getPrevious() {
+        return previous;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    /*public void setValue(Object value) {
+        this.value = value;
+    }*/
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
+    public void setPrevious(Node previous) {
+        this.previous = previous;
     }
 }
