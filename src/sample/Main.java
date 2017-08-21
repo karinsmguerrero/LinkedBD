@@ -1,6 +1,6 @@
 package sample;
 
-import data.structures.SimpleList;
+import data.structures.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -96,20 +96,19 @@ layout.getChildren().add(tree);*/
     public static void main(String[] args) {
         //launch(args);
         int[] vec = {1,2,3};
-        SimpleList list = new SimpleList();
-        list.addNode(vec);
-        list.addNode(2.3);
-        list.addNode("Holiwis");
-        list.addNode(4);
-        list.addNode(5);
+        DoubleList list = new DoubleList();
+        list.addNodeToTheTail(vec);
+        list.addNodeToTheHead(2.3);
+        list.addNodeToTheTail("Holiwis");
+        list.addNodeToTheHead(4);
+        list.addNodeToTheHead(5);
         System.out.println("-----");
-        list.printList();
-        list.deleteNode(0);
-        System.out.println("-----");
-        list.printList();
-        list.deleteNode(2);
-        System.out.println("-----");
-        list.printList();
+        System.out.println(list.getHead().getValue());
+        System.out.println(list.getTail().getValue());
+        list.printListHeadToTail();
+        list.getNode(4);
+
+
 
     }
 }

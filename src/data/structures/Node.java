@@ -6,6 +6,7 @@ public class Node {
     private Node previous;
 
     public Node(Object value){
+        //Llama el otro constructor y le envía dos parametros nulos
         this(value, null, null);
     }
 
