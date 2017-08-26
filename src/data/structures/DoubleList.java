@@ -11,51 +11,129 @@ public class DoubleList extends BasicList{
         return tail;
     }
 
-    public void addNodeToTheTail(Object value){
+    private void addNodeToTheTailAux(Object value){
         if (isEmpty()) {
             Node newest = new Node(value);
             head = tail = newest;
-            current = newest;
         }
         else {
             Node newest = new Node(value, tail, null);
             tail.setNext(newest);
             tail = newest;
-            current = newest;
         }
         size++;
     }
 
-    public void addNodeToTheHead(Object value){
+    public void addNodeToTheTail(Object value){
+        addNodeToTheTailAux(value);
+    }
+
+    private void addNodeToTheHeadAux(Object value){
         if (isEmpty()) {
             Node newest = new Node(value);
             head = tail = newest;
-            current = newest;
         }
         else {
             Node newest = new Node(value, null, head);
             head.setPrevious(newest);
             head = newest;
-            current = newest;
         }
         size++;
     }
 
-    public void deleteNode(int index){
-        Node actual = head;
+    public void addNodeToTheHead(Object value){
+        addNodeToTheHeadAux(value);
+    }
 
-        if (index == 0){
-            head = actual.getNext();
+    private void addNodeByIndexAux(Object value, int index){
+        Node newest = new Node(value);
+        if (isEmpty()) {
+            head = tail = newest;
+        }
+        else if(index == 0 && tail == head){
+            head.setNext(null);
+            tail.setNext(null);
+            head = tail = null;
         }
         else {
+            Node actual = head;
+            for (int i = 0; i < index  - 1; i++) {
+                actual = actual.getNext();
+            }
+            newest.setNext(actual.getNext());
+            actual.getNext().setPrevious(newest);
+            newest.setPrevious(actual);
+            actual.setNext(newest);
+        }
+        size++;
+    }
+
+    public void addNodeByIndex(Object value, int index){
+        addNodeByIndexAux(value, index);
+    }
+
+    private void getNodeValueDynamicAux(int index){
+        Node actual = head;
+        if(getSize()/2 > index || getSize()/2 == index) {
+
             int i = 0;
-            while (i < index - 1){
+            while (i <= index) {
+                if (i == index)
+                    break;
                 actual = actual.getNext();
                 i++;
             }
-            actual.setNext(actual.getNext().getNext());
+            System.out.println(actual.getValue());
+        }
+        else {
+            actual = tail;
+            for(int i = 0; i < (size - 1) - index; i++){
+
+                actual = actual.getPrevious();
+
+            }
+            System.out.println(actual.getValue());
+        }
+    }
+
+    public void getNodeValueDynamic(int index){
+        getNodeValueDynamicAux(index);
+    }
+
+    private void deleteNodeAux(int index){
+        Node actual = head;
+        Node temp;
+        if(head == tail) {
+            head = null;
+            tail = null;
+        }
+        else {
+            //[2]<->[5]<->[4]<->[2.3]<->["holiwis"]
+            switch (index) {
+                case 0:
+                    head = actual.getNext();
+                    head.setPrevious(null);
+                    break;
+                case 1:
+                    temp = head.getNext();
+                    head.setNext(temp.getNext());
+                    temp.getNext().setPrevious(head);
+                    break;
+                default:
+                    for (int i = 0; i < index - 1; i++){
+                        actual = actual.getNext();
+                    }
+                    temp = actual.getNext();
+                    actual.setNext(temp.getNext());
+                    actual.getNext().setPrevious(actual);
+                    break;
+            }
         }
         size--;
+    }
+
+    public void deleteNode(int index){
+        deleteNodeAux(index);
     }
 
     //Eliminarlo después

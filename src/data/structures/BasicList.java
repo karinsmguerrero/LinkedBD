@@ -1,7 +1,7 @@
 package data.structures;
 
 abstract class BasicList {
-    protected Node head;
+    protected Node head, tail;
     protected int size;
 
     protected BasicList(){
@@ -21,7 +21,11 @@ abstract class BasicList {
         return head;
     }
 
-    public void getNode(int index){
+    public Node getNode(int index){
+        return getNodeAux(index);
+    }
+
+    protected Node getNodeAux(int index){
         int i = 0;
         Node actual = head;
         while (i < index){
@@ -30,6 +34,6 @@ abstract class BasicList {
             actual = actual.getNext();
             i++;
         }
-        System.out.println(actual.getValue());
+        return actual;
     }
 }

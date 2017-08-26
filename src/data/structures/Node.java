@@ -1,6 +1,7 @@
 package data.structures;
 
 public class Node {
+
     private Object value;
     private Node next;
     private Node previous;
@@ -17,27 +18,27 @@ public class Node {
         this.next = next;
     }
 
-    public Node getNext() {
-        return next;
-    }
-
-    public Node getPrevious() {
-        return previous;
+    public void setValue(Object value) {
+        this.value = value;
     }
 
     public Object getValue() {
-        return value;
+        return this.value;
     }
-
-    /*public void setValue(Object value) {
-        this.value = value;
-    }*/
 
     public void setNext(Node next) {
         this.next = next;
     }
 
+    public Node getNext() {
+        return next;
+    }
+
     public void setPrevious(Node previous) {
         this.previous = previous;
+    }
+
+    public Node getPrevious() {
+        return previous;
     }
 }
