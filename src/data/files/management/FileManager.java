@@ -1,10 +1,7 @@
 package data.files.management;
 
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
@@ -59,9 +56,9 @@ public class FileManager {
         createFolderAux(File.pathSeparator + name, filePath);
     }
 
-    private void writeToFileAux(String fileName, String filePath, String json){
-        String fileRoute = filePath + File.pathSeparator + fileName + ".json";
-        File file = new File(filePath + File.pathSeparator + fileName);
+    private void writeToFileAux(String fileName, String filePath, String text){
+        String fileRoute = filePath + "\\" + fileName + ".json";
+        File file = new File(filePath + "\\" + fileName);
         FileWriter flWriter = null;
         BufferedWriter bfWriter = null;
         try {
@@ -73,7 +70,7 @@ public class FileManager {
             flWriter = new FileWriter(fileRoute, true);
 
             bfWriter = new BufferedWriter(flWriter);
-            bfWriter.write(json);
+            bfWriter.write(text);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -94,6 +91,20 @@ public class FileManager {
 
     public void writeToFile(String fileName, String filePath, String json){
         writeToFileAux(fileName, filePath, json);
+    }
+
+    public String readFile(String path) throws IOException {
+        FileReader reader = null;
+        BufferedReader buffer = null;
+        try {
+            reader = new FileReader(path);
+            buffer = new BufferedReader(reader);
+            return buffer.readLine();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
