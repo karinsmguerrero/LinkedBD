@@ -1,12 +1,13 @@
 package sample;
 
+import data.files.management.FileManager;
+import data.files.management.JsonManager;
 import data.structures.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
@@ -14,14 +15,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class Main extends Application {
 
     HBox layoutTop;
     VBox layoutLeft;
     BorderPane layout;
     TreeView<String> treeMenu;
+    TreeItem<String> treeRoot;
 
     Scene welcomeScene;
+
+    FileManager files = new FileManager("C:\\Users\\karin\\Desktop\\PruebaBD");
+    File[] listOfForders = files.getListOfFolders();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -37,46 +44,23 @@ public class Main extends Application {
         layoutTop.getChildren().addAll(btnNew, btnSearch, btnAbout);
 
         layoutLeft = new VBox();
-        TreeItem<String> treeRoot = new TreeItem<>();
+        //Crear la raiz del arbol
+        treeRoot = new TreeItem<>();
         treeRoot.setExpanded(true);
+        //Crear el arbol y esconder la raiz
         treeMenu = new TreeView<String>(treeRoot);
-        layoutLeft.getChildren().addAll(treeMenu);
-
-        //here region
-        //region
-
-
-        /*TreeItem<String> root, bucky, megan;
-
-        //Root
-        root = new TreeItem<>();
-        root.setExpanded(true);
-
-        //Bucky
-        bucky = makeBranch("Bucky", root);
-        makeBranch("thenewboston", bucky);
-        makeBranch("YouTube", bucky);
-        makeBranch("Chicken", bucky);
-
-        //Megan
-        megan = makeBranch("Megan", root);
-        makeBranch("Glitter", megan);
-        makeBranch("Makeup", megan);
-
-        //Create the tree and hide the main Root
-        tree = new TreeView<>(root);
-        tree.setShowRoot(false);
-        tree.getSelectionModel().selectedItemProperty()
+        treeMenu.setShowRoot(false);
+        treeMenu.getSelectionModel()
+                .selectedItemProperty()
                 .addListener((v, oldValue, newValue) -> {
-                    if (newValue != null)
-                        System.out.println(newValue.getValue());
+                    //if (newValue != null)
+                        //System.out.println(newValue.getValue());
                 });
 
-        //Layout
-        StackPane layout = new StackPane();
-layout.getChildren().add(tree);*/
+        //Añadir las ramas desde un archivo
+        addBranch(treeRoot);
 
-        //endregion
+        layoutLeft.getChildren().addAll(treeMenu);
 
         layout = new BorderPane();
         layout.setTop(layoutTop);
@@ -93,9 +77,46 @@ layout.getChildren().add(tree);*/
         System.out.println("opended");
     }
 
+    public void addSubBranch(TreeItem parent, File item) {
+        String itemName = item.getName();
+        int pos = itemName.lastIndexOf("."); //Busca el último . de la cadena
+        if (pos > 0) { //Si pos es -1 el caracter no existe
+            itemName = itemName.substring(0, pos); //Corta la cadena
+        }
+        createBranch(itemName, parent);
+    }
+
+    public void addBranch(TreeItem parent){
+        for(File item: listOfForders) {
+            String itemName = item.getName();
+            int pos = itemName.lastIndexOf("."); //Busca el último . de la cadena
+            if (pos > 0) { //Si pos es -1 el caracter no existe
+                itemName = itemName.substring(0, pos); //Corta la cadena
+            }
+            TreeItem<String> branch = createBranch(itemName, parent);
+
+            FileManager subFolder = new FileManager(item.getPath());
+            File[] subFolderItems = subFolder.getListOfFiles(item.getPath());
+            for (File subItem : subFolderItems) {
+                addSubBranch(branch, subItem);
+            }
+        }
+    }
+
+    //Create branches
+    public TreeItem<String> createBranch(String title, TreeItem<String> parent) {
+        TreeItem<String> item = new TreeItem<>(title);
+        item.setExpanded(true);
+        parent.getChildren().add(item);
+        return item;
+    }
+
     public static void main(String[] args) {
         //launch(args);
-        
-
+        //FileManager fm = new FileManager("C:\\Users\\karin\\Desktop\\PruebaBD");
+        //fm.createFolder("UNA");
+        JsonManager js = new JsonManager("C:\\Users\\karin\\Desktop\\PruebaBD\\UNA", "Cursos");
+        //addJsonObjectAux(String key, String type, String FK, boolean required, String defaultValue);
+        js.addJsonObject("Código", "Number", "None", true, "None");
     }
 }
