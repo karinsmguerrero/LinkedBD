@@ -1,9 +1,7 @@
 package GUI;
 
-import data.files.management.FileManager;
+import data.files.FileManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeView;
@@ -27,12 +25,7 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        layoutTop = new HBox();
-        Button btnNew = new Button("Nuevo");
-        btnNew.setOnAction(e -> openWindow());
-        Button btnSearch = new Button("Buscar");
-        Button btnAbout = new Button("Acerca de");
-        layoutTop.getChildren().addAll(btnNew, btnSearch, btnAbout);
+
 
         layoutLeft = new VBox();
         Tree folderTree = new Tree("C:\\Users\\karin\\Desktop\\PruebaBD");
@@ -40,10 +33,13 @@ public class MainWindow extends Application {
         layoutLeft.getChildren().addAll(treeMenu);
 
         layout = new BorderPane();
-        layout.setTop(layoutTop);
         layout.setLeft(layoutLeft);
+        Table table = new Table();
+        layout.setCenter(table.addTable());
+        OptionMenu menu = new OptionMenu();
+        layout.setTop(menu.createMenuBar());
 
-        welcomeScene = new Scene(layout, 400,500);
+        welcomeScene = new Scene(layout);
         primaryStage.setTitle("Linked BD");
         primaryStage.setScene(welcomeScene);
         primaryStage.setMaximized(true);
