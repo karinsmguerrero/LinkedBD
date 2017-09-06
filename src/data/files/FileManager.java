@@ -1,6 +1,8 @@
 package data.files;
 
 
+import configuration.Setting;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -9,8 +11,12 @@ public class FileManager {
     private String filePath;
     private Charset utf8 = StandardCharsets.UTF_8;
 
+    public FileManager(){
+        this("");
+    }
+
     public FileManager(String filePath){
-        this.filePath = filePath;
+        this.filePath = new Setting().getMainFolderPath() + filePath;
     }
 
     private void printAllFiles(){
@@ -47,15 +53,16 @@ public class FileManager {
     }
 
     private void createFolderAux(String folderName, String newfolderPath){
-        String newFile = newfolderPath + folderName;
+        String newFile = "\\" + folderName;
         File file = new File(newFile);
         file.mkdir();
     }
 
     public void createFolder(String name){
-        createFolderAux(File.pathSeparator + name, filePath);
+        createFolderAux(name, filePath);
     }
 
+    //filePath se refiere a la base de datos + tabla
     private void writeToFileAux(String fileName, String filePath, String text){
         String fileRoute = filePath + "\\" + fileName + ".json";
         File file = new File(filePath + "\\" + fileName);

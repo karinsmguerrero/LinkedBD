@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Iterator;
 
 public class JsonManager {
     private String jsonPath;
@@ -24,7 +25,7 @@ public class JsonManager {
         fileManager.createFolder(this.documentName);
     }
 
-    private void addJsonObjectAux(String key, String type, String FK, boolean required, String defaultValue){
+    private void addJsonObjectAux(String key, String type, String FK, String required, String defaultValue){
         JSONObject fieldType = new JSONObject();
         fieldType.put("Type", type);
         JSONObject fieldFK = new JSONObject();
@@ -48,26 +49,43 @@ public class JsonManager {
         fm.writeToFile( documentName, jsonPath,fields.toJSONString());
     }
 
-    public void addJsonObject(String key, String type, String FK, boolean required, String defaultValue){
+    public void addJsonObject(String key, String type, String FK, String required, String defaultValue){
         addJsonObjectAux(key, type, FK, required, defaultValue);
     }
 
     private void readJsonFileAux(String filePath) throws ParseException, IOException {
+        /*
         String path = filePath + "\\" + documentName + ".json";
         FileManager fm = new FileManager(path);
         String text = fm.readFile(path);
 
         JSONParser parser = new JSONParser();
-        Reader reader = new FileReader("C:\\Users\\karin\\Desktop\\PruebaBD\\UCR\\Cursos.json");
+        Reader reader = new FileReader("C:\\Users\\karin\\Desktop\\prueba.json");
 
         JSONObject jsonRoot = (JSONObject) parser.parse(reader);
 
-        String curso1 = (String) jsonRoot.get("Matematica_General");
-        System.out.println(curso1);
-        String curso2 = (String) jsonRoot.get("Matematica_discreta");
-        System.out.println(curso2);
-        String curso3 = (String) jsonRoot.get("Calculo_diferencial");
-        System.out.println(curso3);
+        JSONArray array = (JSONArray) jsonRoot.get("karina");
+        Iterator<String> iterator = array.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }*/
+        String path = filePath + "\\" + documentName + ".json";
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(new FileReader("C:\\Users\\karin\\Desktop\\prueba.json"));
+
+        JSONObject jsonObject = (JSONObject) obj;
+
+        // Now we try to take the data from "presentationSlides" array
+        JSONArray slideContent = (JSONArray) jsonObject.get("nombre");
+        Iterator i = slideContent.iterator();
+
+        while (i.hasNext()) {
+            System.out.println(i.next());
+            JSONObject slide = (JSONObject) i.next();
+            String title = (String)slide.get("CodeNumber");
+            // Here I try to take the title element from my slide but it doesn't work!
+            System.out.println(title);
+        }
 
     }
 

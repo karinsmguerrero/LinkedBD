@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class Table {
@@ -26,23 +27,23 @@ public class Table {
     private VBox addTableAux() {
 
         //Name column
-        TableColumn<ColumnCreator, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<ColumnCreator, String> nameColumn = new TableColumn<>("Nombre");
         nameColumn.setMinWidth(200);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("columnName"));
 
-        TableColumn<ColumnCreator, Double> typeColumn = new TableColumn<>("Data Type");
+        TableColumn<ColumnCreator, Double> typeColumn = new TableColumn<>("Tipo de dato");
         typeColumn.setMinWidth(100);
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("columnType"));
 
-        TableColumn<ColumnCreator, String> fkColumn = new TableColumn<>("Foreign key");
+        TableColumn<ColumnCreator, String> fkColumn = new TableColumn<>("Tipo especial");
         fkColumn.setMinWidth(100);
         fkColumn.setCellValueFactory(new PropertyValueFactory<>("columnFK"));
 
-        TableColumn<ColumnCreator, String> requiredColumn = new TableColumn<>("Is required");
+        TableColumn<ColumnCreator, String> requiredColumn = new TableColumn<>("Es requerido");
         requiredColumn.setMinWidth(100);
         requiredColumn.setCellValueFactory(new PropertyValueFactory<>("columnRequired"));
 
-        TableColumn<ColumnCreator, String> defaultColumn = new TableColumn<>("Default value");
+        TableColumn<ColumnCreator, String> defaultColumn = new TableColumn<>("Valor por defecto");
         defaultColumn.setMinWidth(100);
         defaultColumn.setCellValueFactory(new PropertyValueFactory<>("columnDefault"));
 
@@ -52,32 +53,33 @@ public class Table {
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(table, addFooter());
+        VBox.setVgrow(table, Priority.ALWAYS);
         return vBox;
     }
 
     private HBox addFooterAux(){
         //Name input
         nameInput = new TextField();
-        nameInput.setPromptText("Name");
+        nameInput.setPromptText("Nombre");
         nameInput.setMinWidth(100);
 
         typeInput = new TextField();
-        typeInput.setPromptText("Data Type");
+        typeInput.setPromptText("Tipo de dato");
 
         fkInput = new TextField();
-        fkInput.setPromptText("FK: type None if not needed");
+        fkInput.setPromptText("Tipo especial");
 
         requiredChoice = new ChoiceBox<String>();
         requiredChoice.getItems().addAll("true", "false");
         requiredChoice.setValue("false");
 
         defaultInput = new TextField();
-        defaultInput.setPromptText("Default: type None if not needed");
+        defaultInput.setPromptText("Valor por defecto");
 
         //Button
-        Button addButton = new Button("Add");
+        Button addButton = new Button("Añadir");
         addButton.setOnAction(e -> addButtonClicked());
-        Button deleteButton = new Button("Delete");
+        Button deleteButton = new Button("Eliminar");
         deleteButton.setOnAction(e -> deleteButtonClicked());
 
         HBox hBox = new HBox();

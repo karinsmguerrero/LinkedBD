@@ -1,16 +1,14 @@
 package GUI;
 
-import data.files.FileManager;
+import configuration.Setting;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.*;
 
 public class MainWindow extends Application {
     HBox layoutTop;
@@ -19,17 +17,12 @@ public class MainWindow extends Application {
 
     Scene welcomeScene;
 
-    FileManager files = new FileManager("C:\\Users\\karin\\Desktop\\PruebaBD");
-    File[] listOfForders = files.getListOfFolders();
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-
-
         layoutLeft = new VBox();
-        Tree folderTree = new Tree("C:\\Users\\karin\\Desktop\\PruebaBD");
+        Tree folderTree = new Tree();
         TreeView<String> treeMenu = folderTree.createTree();
+        VBox.setVgrow(treeMenu, Priority.ALWAYS);
         layoutLeft.getChildren().addAll(treeMenu);
 
         layout = new BorderPane();
@@ -40,20 +33,17 @@ public class MainWindow extends Application {
         layout.setTop(menu.createMenuBar());
 
         welcomeScene = new Scene(layout);
+        welcomeScene.getStylesheets().add("GUI/flat_ui.css");
         primaryStage.setTitle("Linked BD");
         primaryStage.setScene(welcomeScene);
         primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
-    public void openWindow(){
-        System.out.println("opened");
-    }
-
     public static void main(String[] args) {
+        System.out.println(new Setting().getMainFolderPath());
         launch(args);
+
     }
-
-
 
 }

@@ -16,23 +16,26 @@ public class OptionMenu {
         newMenu.getItems().add(newTable);
 
         newMenu.getItems().add(new SeparatorMenuItem());
+
         MenuItem newFK = new MenuItem("Nueva llave foranea");
-        newTable.setOnAction(e -> System.out.println("Create a new FK..."));
+        newFK.setOnAction(e -> System.out.println("Create a new FK..."));
         newMenu.getItems().add(newFK);
 
         newMenu.getItems().add(new SeparatorMenuItem());
+
         MenuItem newCommit = new MenuItem("Nuevo commit");
-        newTable.setOnAction(e -> System.out.println("Create a new commit..."));
+        newCommit.setOnAction(e -> System.out.println("Create a new commit..."));
         newMenu.getItems().add(newCommit);
 
         //Edit menu
-        Menu editMenu = new Menu("_Edit");
-        editMenu.getItems().add(new MenuItem("Cut"));
-        editMenu.getItems().add(new MenuItem("Copy"));
-        MenuItem paste = new MenuItem("Paste");
-        paste.setOnAction(e -> System.out.println("Pasting some crap"));
-        paste.setDisable(true);
-        editMenu.getItems().add(paste);
+        Menu searchMenu = new Menu("_Buscar");
+        searchMenu.getItems().add(new SeparatorMenuItem());
+
+        MenuItem newSearch = new MenuItem("Nueva búsqueda");
+        newSearch.setOnAction(e -> System.out.println("Create a new search..."));
+        searchMenu.getItems().add(newSearch);
+
+
 
         //Help menu
         Menu helpMenu = new Menu("Help");
@@ -49,7 +52,7 @@ public class OptionMenu {
 
         //Main menu bar
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(newMenu, editMenu, helpMenu);
+        menuBar.getMenus().addAll(newMenu, searchMenu, helpMenu);
         return menuBar;
     }
 
