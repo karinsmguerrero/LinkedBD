@@ -21,11 +21,22 @@ public class JsonManager {
         this.fileManager = new FileManager(jsonPath);
     }
 
-    private void createJsonFile(String key, JSONArray value){
-        fileManager.createFolder(this.documentName);
+    private void createJsonFile(){
+        //fileManager.createFolder(this.documentName);
     }
 
-    private void addJsonObjectAux(String key, String type, String FK, String required, String defaultValue){
+    /**
+     *
+     * @param key: JSON key name
+     * @param type: data type
+     * @param FK: includes FK
+     * @param PK: includes PK
+     * @param required: is requiered
+     * @param defaultValue: value if not required
+     * @see #addJsonObject(String, String, String, String, String, String)
+     */
+    private void addJsonObjectAux(String key, String type, String FK, String PK, String required, String defaultValue){
+
         JSONObject fieldType = new JSONObject();
         fieldType.put("Type", type);
         JSONObject fieldFK = new JSONObject();
@@ -34,23 +45,24 @@ public class JsonManager {
         fieldIsRequired.put("Required", required);
         JSONObject fieldDefault = new JSONObject();
         fieldDefault.put("Default", defaultValue);
+        JSONObject fieldName = new JSONObject();
+        fieldName.put(key,fieldsArray);
+
         JSONArray fieldsArray = new JSONArray();
         fieldsArray.add(fieldType);
         fieldsArray.add(fieldFK);
         fieldsArray.add(fieldIsRequired);
         fieldsArray.add(fieldDefault);
 
-        JSONObject fieldName = new JSONObject();
-        fieldName.put(key,fieldsArray);
+        JSONObject row = new JSONObject();
+        row.put("row", fieldsArray);
 
-        JSONArray fields = new JSONArray();
-        fields.add(fieldName);
         FileManager fm = new FileManager(jsonPath + documentName);
-        fm.writeToFile( documentName, jsonPath,fields.toJSONString());
+        fm.writeToFile( documentName, jsonPath, row.toJSONString());
     }
 
-    public void addJsonObject(String key, String type, String FK, String required, String defaultValue){
-        addJsonObjectAux(key, type, FK, required, defaultValue);
+    public void addJsonObject(String key, String type, String FK, String PK, String required, String defaultValue){
+        addJsonObjectAux(key, type, FK, PK, required, defaultValue);
     }
 
     private void readJsonFileAux(String filePath) throws ParseException, IOException {

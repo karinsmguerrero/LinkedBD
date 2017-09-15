@@ -15,6 +15,10 @@ public class FileManager {
         this("");
     }
 
+    /**
+     *
+     * @param filePath: ruta dentro de la carpeta principal, BD\\tabla
+     */
     public FileManager(String filePath){
         this.filePath = new Setting().getMainFolderPath() + filePath;
     }
@@ -69,11 +73,11 @@ public class FileManager {
         FileWriter flWriter = null;
         BufferedWriter bfWriter = null;
         try {
-            if(!file.exists())
+            /*if(!file.exists())
             {
                 String folderName = filePath.substring(filePath.lastIndexOf("\\"));
                 createFolderAux(folderName, filePath.substring(0, filePath.lastIndexOf("\\")));
-            }
+            }*/
             flWriter = new FileWriter(fileRoute, true);
 
             bfWriter = new BufferedWriter(flWriter);

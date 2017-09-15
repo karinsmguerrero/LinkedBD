@@ -1,7 +1,7 @@
 package configuration;
 
 public class Setting {
-    private String mainFolderPath = "C:\\Users\\karin\\Documents\\LinkedBD";
+    private static String mainFolderPath = "C:\\Users\\karin\\Documents\\LinkedBD";
 
     public String getMainFolderPath() {
         return mainFolderPath;

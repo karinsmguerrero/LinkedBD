@@ -1,6 +1,10 @@
 package data.generics.structures;
 
 public class SimpleList<T> extends BasicList{
+
+    public SimpleList(){
+        super();
+    }
     public void addNode(T value){
         Node<T> newest = new Node(value);
         if (isEmpty()) {
