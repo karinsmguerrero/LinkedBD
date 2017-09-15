@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/ejemplo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/BasicList.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/CircularList.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/DoubleNode.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/Node.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/SimpleList.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/sample/MyMenusControl.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/sample/MyMenus.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/sample/PaneOne.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/sample/PaneTwo.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/MyMenus.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/MyMenusControl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/PaneOne.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/PaneTwo.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/BasicList.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/CircularList.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/DoubleNode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/Node.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/SimpleList.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/CircularDoubleList.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/CircularDoubleList.class" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/test/structureGenerics/DoubleList.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/generics/structures/DoubleList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/structures/CircularList.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/structures/CircularList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/sample/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/configuration/Setting.java" afterPath="$PROJECT_DIR$/src/configuration/Setting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/FileManager.java" afterPath="$PROJECT_DIR$/src/data/files/FileManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/ejemplo.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Tree.java" afterPath="$PROJECT_DIR$/src/GUI/Tree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/JsonManager.java" afterPath="$PROJECT_DIR$/src/data/files/JsonManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/generics/structures/SimpleList.java" afterPath="$PROJECT_DIR$/src/data/generics/structures/SimpleList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,8 +115,8 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,9 +127,14 @@
       <file leaf-file-name="Tree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/Tree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="695">
-              <caret line="52" column="38" lean-forward="true" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="710">
+              <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+              <folding>
+                <element signature="method#Tree#0;class#Tree#0" expanded="false" />
+                <element signature="method#addBranch#0;class#Tree#0" expanded="false" />
+                <element signature="method#addLeave#0;class#Tree#0" expanded="false" />
+                <element signature="method#createBranch#0;class#Tree#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,8 +142,8 @@
       <file leaf-file-name="JsonManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/files/JsonManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="24" column="54" lean-forward="false" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+            <state relative-caret-position="549">
+              <caret line="71" column="33" lean-forward="true" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -253,7 +232,6 @@
         <option value="$PROJECT_DIR$/src/configuratio/settings.java" />
         <option value="$PROJECT_DIR$/src/configuration/settings.java" />
         <option value="$PROJECT_DIR$/src/GUI/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/GUI/Tree.java" />
         <option value="$PROJECT_DIR$/src/data/structures/CircularList.java" />
         <option value="$PROJECT_DIR$/src/test/structureGenerics/CircularNode.java" />
         <option value="$PROJECT_DIR$/src/test/structureGenerics/DoubleNode.java" />
@@ -273,8 +251,9 @@
         <option value="$PROJECT_DIR$/src/data/files/ejemplo.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/configuration/Setting.java" />
-        <option value="$PROJECT_DIR$/src/data/files/JsonManager.java" />
         <option value="$PROJECT_DIR$/src/data/files/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/data/files/JsonManager.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Tree.java" />
       </list>
     </option>
   </component>
@@ -285,7 +264,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="886" />
     <option name="height" value="735" />
@@ -407,7 +386,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ejemplo">
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration name="Main" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -568,8 +547,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.ejemplo" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MainWindow" />
+        <item index="0" class="java.lang.String" itemvalue="Application.MainWindow" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ejemplo" />
       </list>
     </recent_temporary>
   </component>
@@ -593,19 +572,20 @@
       <workItem from="1504415562159" duration="22824000" />
       <workItem from="1504700288205" duration="13411000" />
       <workItem from="1505434565132" duration="276000" />
-      <workItem from="1505435527863" duration="5361000" />
+      <workItem from="1505435527863" duration="6302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171612000" />
+    <option name="totallyTimeSpent" value="172553000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -627,7 +607,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1053,14 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/files/JsonManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="24" column="54" lean-forward="false" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/files/FileManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -1074,19 +1045,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/files/JsonManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="71" column="33" lean-forward="true" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="52" column="38" lean-forward="true" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="710">
+          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+          <folding>
+            <element signature="method#Tree#0;class#Tree#0" expanded="false" />
+            <element signature="method#addBranch#0;class#Tree#0" expanded="false" />
+            <element signature="method#addLeave#0;class#Tree#0" expanded="false" />
+            <element signature="method#createBranch#0;class#Tree#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

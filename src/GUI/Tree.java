@@ -21,6 +21,7 @@ public class Tree {
     public TreeView<String> createTree(){
         return createTreeAux();
     }
+
     private TreeView<String> createTreeAux(){
         //Crear la raiz del arbol
         treeRoot = new TreeItem<>();
@@ -28,16 +29,6 @@ public class Tree {
         //Crear el arbol y esconder la raiz
         treeMenu = new TreeView<String>(treeRoot);
         treeMenu.setShowRoot(false);
-        /*treeMenu.getSelectionModel()
-                .selectedItemProperty()
-                .addListener((v, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        String path = treeMenu.getSelectionModel().getSelectedItem().getParent().getValue();
-                        path += treeMenu.getSelectionModel().getSelectedItem().getValue();
-                        FileManager fm = new FileManager("C:\\Users\\karin\\Desktop\\PruebaBD");
-                        fm.createFolder("Holi" + path);
-                    }
-                });*/
 
         //Añadir las ramas desde un archivo
         addBranch(treeRoot);
@@ -59,7 +50,6 @@ public class Tree {
         return treeMenu;
     }
 
-
     private void addBranch(TreeItem parent){
         for(File item: listOfFolders) {
             String itemName = item.getName();
@@ -72,28 +62,13 @@ public class Tree {
             FileManager subFolder = new FileManager("\\" + item.getName());
             File[] subFolderList = subFolder.getListOfFolders();
 
-
-            addSubBranch(branch, subFolderList);
-
-        }
-    }
-
-    private void addSubBranch(TreeItem parent, File[] List) {
-        for (File subItem : List) {
-            String itemName = subItem.getName();
-            int pos = itemName.lastIndexOf("."); //Busca el último . de la cadena
-            if (pos > 0) { //Si pos es -1 el caracter no existe
-                itemName = itemName.substring(0, pos); //Corta la cadena
-            }
-            TreeItem<String> branch = createBranch(itemName, parent);
-
-            FileManager subFolder = new FileManager(subItem.getPath());
-            File[] subFolderDocs = subFolder.getListOfFiles(subItem.getPath());
-            for (File document : subFolderDocs) {
+            FileManager subItems = new FileManager(item.getPath());
+            File[] subItemDocs = subItems.getListOfFiles(item.getPath());
+            for (File document : subItemDocs) {
                 addLeave(branch, document);
             }
-        }
 
+        }
     }
 
     private void addLeave(TreeItem parent, File item) {
