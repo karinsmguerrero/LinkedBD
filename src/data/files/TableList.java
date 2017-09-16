@@ -6,16 +6,12 @@ public class TableList {
 
     private String fileName;
     private CircularDoubleList<FieldList> fileList;
-    private String fileTable, fileDB;
+    private String fileDB;
 
-    public TableList(String fileName, String fileTable, String fileDB){
+    public TableList(String fileName, String fileDB){
         this.fileName = fileName;
-        this.fileTable = fileTable;
         this.fileDB = fileDB;
-    }
-
-    public String getFileTable() {
-        return fileTable;
+        setObjectList();
     }
 
     public String getFileDB(){
@@ -40,6 +36,7 @@ public class TableList {
      * @see FieldList
      */
     private void setObjectList() {
+        //public FileManager(String fileTable, String fileDB)
         FileManager flMng = new FileManager("", fileDB);
         fileList = flMng.fileToList();
     }

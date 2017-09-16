@@ -1,22 +1,29 @@
 package GUI;
 
-import data.files.FileManager;
+//import data.files.FileManager;
+import data.files.DBList;
+import data.files.FieldList;
+import data.files.TableList;
+import data.structures.generics.DoubleNode;
+import data.structures.generics.Node;
 import javafx.scene.control.*;
 
 import java.io.File;
 
 public class TreeMenu {
 
-    private FileManager files;
+    //private FileManager files;
     private File[] listOfFolders;
+
+    private DBList dbList = new DBList("Random");
 
     private TreeView<String> treeMenu;
     private TreeItem<String> treeRoot;
 
-    public TreeMenu(){
+    /*public TreeMenu(){
         files = new FileManager();
         listOfFolders = files.getListOfFolders();
-    }
+    }*/
 
     public TreeView<String> createTree(){
         return createTreeAux();
@@ -51,7 +58,25 @@ public class TreeMenu {
     }
 
     private void addBranch(TreeItem parent){
-        for(File item: listOfFolders) {
+        DoubleNode<TableList> temp = dbList.getDbList().getHead();
+
+        for (int i = 0; i < dbList.getDbList().getSize(); i++){
+            System.out.println(temp.getValue().getFileName());
+            String dbName = temp.getValue().getFileName();
+            TreeItem<String> branch = createBranch(dbName, parent);
+
+            DoubleNode<FieldList> leave = temp.getValue().getFileList().getHead();
+
+            for(int z = 0; z < temp.getValue().getFileList().getSize(); z++) {
+                System.out.println(leave.getValue().getFileName());
+                addLeave(branch, leave.getValue().getFileName());
+                leave = leave.getNext();
+            }
+            temp = temp.getNext();
+        }
+
+        /*
+        for(DoubleNode<TableList> db: dbList.getDbList()) {
             String itemName = item.getName();
             int pos = itemName.lastIndexOf("."); //Busca el último . de la cadena
             if (pos > 0) { //Si pos es -1 el caracter no existe
@@ -68,16 +93,15 @@ public class TreeMenu {
                 addLeave(branch, document);
             }
 
-        }
+        }*/
     }
 
-    private void addLeave(TreeItem parent, File item) {
-        String itemName = item.getName();
-        int pos = itemName.lastIndexOf("."); //Busca el último . de la cadena
+    private void addLeave(TreeItem parent, String item) {
+        int pos = item.lastIndexOf("."); //Busca el último . de la cadena
         if (pos > 0) { //Si pos es -1 el caracter no existe
-            itemName = itemName.substring(0, pos); //Corta la cadena
+            item = item.substring(0, pos); //Corta la cadena
         }
-        createBranch(itemName, parent);
+        createBranch(item, parent);
     }
 
     //Create branches

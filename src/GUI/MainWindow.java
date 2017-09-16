@@ -1,6 +1,6 @@
 package GUI;
 
-import data.files.JsonManager;
+import data.files.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeView;

@@ -105,9 +105,9 @@ public class JsonManager {
 
         JSONObject jsonObject = (JSONObject) obj;
         JSONArray rows = (JSONArray) jsonObject.get(this.tableName);
-
         // Now we try to take the data from "rows" array
         Iterator iterator = rows.iterator();
+
         iterator.forEachRemaining(e -> {
             JSONObject row = (JSONObject) iterator.next();
             RowMaker rowMaker = fillRowMaker((JSONArray) row.get("row"));

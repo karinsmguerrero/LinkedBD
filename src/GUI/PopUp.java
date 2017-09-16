@@ -24,7 +24,7 @@ public class PopUp {
         Label label = new Label();
         label.setText("Nombre de la nueva base de datos");
         TextField txtName = new TextField();
-        flManager = new FileManager(path);
+        flManager = new FileManager("", path);
         Button createButton = new Button("Crear");
         createButton.setOnAction(e -> {
             flManager.createFolder(txtName.getText());

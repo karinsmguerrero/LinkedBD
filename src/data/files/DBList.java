@@ -8,6 +8,7 @@ public class DBList {
 
     public DBList(String fileName){
         this.fileName = fileName;
+        setDbList();
     }
 
     public String getFileName() {
@@ -27,7 +28,7 @@ public class DBList {
      * @see TableList
      * @see FieldList
      */
-    private void setObjectList() {
+    private void setDbList() {
         FileManager flMng = new FileManager();
         dbList = flMng.folderToList();
     }

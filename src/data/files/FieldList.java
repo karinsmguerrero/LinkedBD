@@ -20,6 +20,7 @@ public class FieldList {
         this.fileName = fileName;
         this.fileTable = fileTable;
         this.fileDB = fileDB;
+        setObjectList();
     }
 
     public String getFileTable() {
@@ -47,6 +48,7 @@ public class FieldList {
      * @see JsonManager#JsonToList() ;
      */
     private void setObjectList() {
+        //public JsonManager(String DB, String tableName)
         JsonManager jsMng = new JsonManager(fileDB, fileTable);
         objectList = jsMng.JsonToList();
     }

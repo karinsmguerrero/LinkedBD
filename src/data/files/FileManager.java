@@ -48,7 +48,12 @@ public class FileManager {
         CircularDoubleList<FieldList> lnkListFiles = new CircularDoubleList<>();
         File[] files = getListOfFilesFilesAux(this.filePath);
         for(File file: files){
-            FieldList fldList = new FieldList(file.getName(), fileDB, file.getName());
+            String tableName = file.getName();
+            int pos = tableName.lastIndexOf("."); //Busca el último . de la cadena
+            if (pos > 0) { //Si pos es -1 el caracter no existe
+                tableName = tableName.substring(0, pos); //Corta la cadena
+            }
+            FieldList fldList = new FieldList(tableName, tableName, fileDB);
             lnkListFiles.insertNodeToTail(fldList);
         }
         return lnkListFiles;
@@ -62,7 +67,7 @@ public class FileManager {
         DoubleList<TableList> lnkListFolder = new DoubleList<>();
         File[] folders = getListOfFoldersAux();
         for(File folder: folders){
-            lnkListFolder.addNodeToTheTail(new TableList(folder.getName(), "", folder.getName()));
+            lnkListFolder.addNodeToTheTail(new TableList(folder.getName(), folder.getName()));
         }
         return lnkListFolder;
     }
