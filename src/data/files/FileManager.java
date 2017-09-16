@@ -4,6 +4,7 @@ package data.files;
 import configuration.Setting;
 import data.structures.generics.CircularDoubleList;
 import data.structures.generics.DoubleList;
+import javafx.scene.control.Tab;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -11,18 +12,23 @@ import java.nio.charset.StandardCharsets;
 
 public class FileManager {
     private String filePath;
+    private String fileTable;
+    private String fileDB;
     private Charset utf8 = StandardCharsets.UTF_8;
 
     public FileManager(){
-        this("");
+        this("", "");
     }
 
     /**
      *
-     * @param filePath: ruta dentro de la carpeta principal, BD\\tabla
+     * @param fileTable: nombre de la tabla
+     * @param fileDB: nombre de la base de datos
      */
-    public FileManager(String filePath){
-        this.filePath = Setting.getMainFolderPath() + "\\" + filePath;
+    public FileManager(String fileTable, String fileDB){
+        this.filePath = Setting.getMainFolderPath() + "\\" + fileDB + "\\" + fileTable;
+        this.fileDB = fileDB;
+        this.fileTable = fileTable;
     }
 
     private void printAllFiles(){
@@ -38,29 +44,30 @@ public class FileManager {
         }
     }
 
-    private CircularDoubleList<File> fileToListAux(){
-        CircularDoubleList<File> lnkListFiles = new CircularDoubleList<>();
+    private CircularDoubleList<FieldList> fileToListAux(){
+        CircularDoubleList<FieldList> lnkListFiles = new CircularDoubleList<>();
         File[] files = getListOfFilesFilesAux(this.filePath);
         for(File file: files){
-            lnkListFiles.insertNodeToTail(file);
+            FieldList fldList = new FieldList(file.getName(), fileDB, file.getName());
+            lnkListFiles.insertNodeToTail(fldList);
         }
         return lnkListFiles;
     }
 
-    public CircularDoubleList<File> fileToList(){
+    public CircularDoubleList<FieldList> fileToList(){
         return fileToListAux();
     }
 
-    private DoubleList<File> folderToListAux(){
-        DoubleList<File> lnkListFolder = new DoubleList<>();
+    private DoubleList<TableList> folderToListAux(){
+        DoubleList<TableList> lnkListFolder = new DoubleList<>();
         File[] folders = getListOfFoldersAux();
         for(File folder: folders){
-            lnkListFolder.addNodeToTheTail(folder);
+            lnkListFolder.addNodeToTheTail(new TableList(folder.getName(), "", folder.getName()));
         }
         return lnkListFolder;
     }
 
-    public DoubleList<File> folderToList(){
+    public DoubleList<TableList> folderToList(){
         return folderToListAux();
     }
 

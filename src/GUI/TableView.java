@@ -12,14 +12,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class Table {
+public class TableView {
 
-    TableView<RowMaker> table;
+    javafx.scene.control.TableView<RowMaker> table;
     TextField nameInput, typeInput, fkInput, pkInput, defaultInput;
     ChoiceBox requiredChoice;
     SimpleList<RowMaker> list;
 
-    public Table(SimpleList<RowMaker> list ){
+    public TableView(SimpleList<RowMaker> list ){
         this.list = list;
     }
 
@@ -58,7 +58,7 @@ public class Table {
         defaultColumn.setMinWidth(100);
         defaultColumn.setCellValueFactory(new PropertyValueFactory<>("columnDefault"));
 
-        table = new TableView<>();
+        table = new javafx.scene.control.TableView<>();
         //añadir filas a la tabla
         table.setItems(getRow());
         table.getColumns().addAll(nameColumn, typeColumn, fkColumn, pkColumn, requiredColumn, defaultColumn);

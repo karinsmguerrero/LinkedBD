@@ -21,7 +21,7 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         layoutLeft = new VBox();
-        Tree folderTree = new Tree();
+        TreeMenu folderTree = new TreeMenu();
         TreeView<String> treeMenu = folderTree.createTree();
         VBox.setVgrow(treeMenu, Priority.ALWAYS);
         layoutLeft.getChildren().addAll(treeMenu);
@@ -29,8 +29,8 @@ public class MainWindow extends Application {
         layout = new BorderPane();
         layout.setLeft(layoutLeft);
         jm = new JsonManager("UNED", "cursos");
-        Table table = new Table(jm.JsonToList());
-        layout.setCenter(table.addTable());
+        TableView tableView = new TableView(jm.JsonToList());
+        layout.setCenter(tableView.addTable());
         OptionMenu menu = new OptionMenu();
         layout.setTop(menu.createMenuBar());
 

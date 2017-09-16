@@ -24,7 +24,7 @@ public class JsonManager {
     public JsonManager(String DB, String tableName){
         this.DB = Setting.getMainFolderPath() + "\\" + DB;
         this.tableName = tableName;
-        this.fileManager = new FileManager(DB);
+        this.fileManager = new FileManager(tableName, DB);
     }
 
     private void createJsonFile(){

@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 
 import java.io.File;
 
-public class Tree {
+public class TreeMenu {
 
     private FileManager files;
     private File[] listOfFolders;
@@ -13,7 +13,7 @@ public class Tree {
     private TreeView<String> treeMenu;
     private TreeItem<String> treeRoot;
 
-    public Tree(){
+    public TreeMenu(){
         files = new FileManager();
         listOfFolders = files.getListOfFolders();
     }
@@ -59,10 +59,10 @@ public class Tree {
             }
             TreeItem<String> branch = createBranch(itemName, parent);
             System.out.println(item.getPath());
-            FileManager subFolder = new FileManager("\\" + item.getName());
+            FileManager subFolder = new FileManager("\\" + item.getName(), "");
             File[] subFolderList = subFolder.getListOfFolders();
 
-            FileManager subItems = new FileManager(item.getPath());
+            FileManager subItems = new FileManager(item.getPath(), "");
             File[] subItemDocs = subItems.getListOfFiles(item.getPath());
             for (File document : subItemDocs) {
                 addLeave(branch, document);
