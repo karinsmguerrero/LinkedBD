@@ -1,5 +1,6 @@
 package data.files;
 
+import data.generics.structures.SimpleList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -7,22 +8,35 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Iterator;
+import configuration.Setting;
 
 public class JsonManager {
-    private String jsonPath;
-    private String documentName;
+    private String DB;
+    private String tableName;
     private FileManager fileManager;
 
-    public JsonManager(String jsonPath, String documentName){
-        this.jsonPath = jsonPath;
-        this.documentName = documentName;
-        this.fileManager = new FileManager(jsonPath);
+    /**
+     *
+     * @param DB: ruta con la base de datos
+     * @param tableName: nombre de la tabla
+     */
+    public JsonManager(String DB, String tableName){
+        this.DB = Setting.getMainFolderPath() + "\\" + DB;
+        this.tableName = tableName;
+        this.fileManager = new FileManager(DB);
     }
 
     private void createJsonFile(){
-        //fileManager.createFolder(this.documentName);
+        String filePath = DB + "\\" + tableName;
+        JSONObject mainObject = new JSONObject();
+        JSONArray rowsArray = new JSONArray();
+        mainObject.put(tableName, rowsArray);
+        fileManager.writeToFile(tableName, DB, mainObject.toJSONString());
+    }
+
+    public void createJSONFile(){
+        createJsonFile();
     }
 
     /**
@@ -35,7 +49,13 @@ public class JsonManager {
      * @param defaultValue: value if not required
      * @see #addJsonObject(String, String, String, String, String, String)
      */
-    private void addJsonObjectAux(String key, String type, String fk, String pk, String required, String defaultValue){
+    private void addJsonObjectAux(String key, String type, String fk, String pk, String required, String defaultValue) throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(new FileReader(this.DB + "\\" + this.tableName + ".json"));
+
+        JSONObject jsonObject = (JSONObject) obj;
+        // Now we try to take the data from "presentationSlides" array
+        JSONArray rows = (JSONArray) jsonObject.get(this.tableName);
 
         JSONObject fieldName = new JSONObject();
         fieldName.put("Name", key);
@@ -60,53 +80,69 @@ public class JsonManager {
 
         JSONObject row = new JSONObject();
         row.put("row", fieldsArray);
+        rows.add(row);
 
-        FileManager fm = new FileManager(jsonPath + documentName);
-        fm.writeToFile( documentName, jsonPath, row.toJSONString());
+        FileManager fm = new FileManager();
+        JSONObject newJsonObject = new JSONObject();
+        newJsonObject.put(this.tableName, rows);
+        String path = this.DB + "\\" + this.tableName + ".json";
+        fm.writeToExistentFile(path, newJsonObject.toJSONString());
     }
 
-    public void addJsonObject(String key, String type, String FK, String PK, String required, String defaultValue){
+    public void addJsonObject(String key, String type, String FK, String PK, String required, String defaultValue) throws IOException, ParseException {
         addJsonObjectAux(key, type, FK, PK, required, defaultValue);
     }
 
-    private void readJsonFileAux(String filePath) throws ParseException, IOException {
-        /*
-        String path = filePath + "\\" + documentName + ".json";
-        FileManager fm = new FileManager(path);
-        String text = fm.readFile(path);
+    private SimpleList<RowMaker> JsonToListAux() throws ParseException, IOException {
+        SimpleList<RowMaker> list = new SimpleList<>();
 
         JSONParser parser = new JSONParser();
-        Reader reader = new FileReader("C:\\Users\\karin\\Desktop\\prueba.json");
-
-        JSONObject jsonRoot = (JSONObject) parser.parse(reader);
-
-        JSONArray array = (JSONArray) jsonRoot.get("karina");
-        Iterator<String> iterator = array.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }*/
-        String path = filePath + "\\" + documentName + ".json";
-        JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader("C:\\Users\\karin\\Desktop\\prueba.json"));
+        Object obj = parser.parse(new FileReader(this.DB + "\\" + this.tableName + ".json"));
 
         JSONObject jsonObject = (JSONObject) obj;
+        JSONArray rows = (JSONArray) jsonObject.get(this.tableName);
 
-        // Now we try to take the data from "presentationSlides" array
-        JSONArray slideContent = (JSONArray) jsonObject.get("nombre");
-        Iterator i = slideContent.iterator();
+        // Now we try to take the data from "rows" array
+        Iterator iterator = rows.iterator();
+        iterator.forEachRemaining(e -> {
+            JSONObject row = (JSONObject) iterator.next();
+            RowMaker rowMaker = fillRowMaker((JSONArray) row.get("row"));
+            list.addNode(rowMaker);
+        });
 
-        while (i.hasNext()) {
-            System.out.println(i.next());
-            JSONObject slide = (JSONObject) i.next();
-            String title = (String)slide.get("CodeNumber");
-            // Here I try to take the title element from my slide but it doesn't work!
-            System.out.println(title);
-        }
-
+        return list;
     }
 
-    public void readJsonFile() throws IOException, ParseException {
-        readJsonFileAux(jsonPath);
+    public SimpleList<RowMaker> JsonToList(){
+        try {
+            return JsonToListAux();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private RowMaker fillRowMaker(JSONArray row){
+        JSONObject name = (JSONObject) row.get(0);
+        JSONObject type = (JSONObject) row.get(1);
+        JSONObject fk = (JSONObject) row.get(2);
+        JSONObject pk = (JSONObject) row.get(3);
+        JSONObject required = (JSONObject) row.get(4);
+        JSONObject defaultValue = (JSONObject) row.get(5);
+
+        RowMaker rowMaker = new RowMaker();
+        rowMaker.setColumnName(name.get("Name").toString());
+        rowMaker.setColumnType(type.get("Type").toString());
+        rowMaker.setColumnFK(fk.get("Fk").toString());
+        rowMaker.setColumnPK(pk.get("Pk").toString());
+        if(required.get("Required") == "true")
+            rowMaker.setColumnRequired(true);
+        else
+            rowMaker.setColumnRequired(false);
+        rowMaker.setColumnDefault(defaultValue.get("Default").toString());
+        return rowMaker;
     }
 
 }

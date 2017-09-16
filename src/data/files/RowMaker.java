@@ -1,24 +1,25 @@
 package data.files;
 
-public class ColumnCreator {
+public class RowMaker {
     private String columnName;
     private String columnType;
-    private String columnFK;
+    private String columnFK, columnPK;
     private boolean columnRequired;
     private String columnDefault;
 
-    public ColumnCreator(){
+    public RowMaker(){
         this.columnName = null;
         this.columnType = null;
-        this.columnFK = null;
+        this.columnFK = this.columnPK = null;
         this.columnRequired = false;
         this.columnDefault = null;
     }
 
-    public ColumnCreator(String columnName, String columnType, String columnFK, boolean columnRequired, String columnDefault){
+    public RowMaker(String columnName, String columnType, String columnFK, String columnPK, boolean columnRequired, String columnDefault){
         this.columnName = columnName;
         this.columnType = columnType;
         this.columnFK = columnFK;
+        this.columnPK = columnPK;
         this.columnRequired = columnRequired;
         this.columnDefault = columnDefault;
     }
@@ -41,6 +42,14 @@ public class ColumnCreator {
 
     public void setColumnDefault(String columnDefault) {
         this.columnDefault = columnDefault;
+    }
+
+    public String getColumnPK() {
+        return columnPK;
+    }
+
+    public void setColumnPK(String columnPK) {
+        this.columnPK = columnPK;
     }
 
     public String getColumnName() {

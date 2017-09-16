@@ -1,6 +1,8 @@
 package GUI;
 
-import data.files.ColumnCreator;
+import data.files.RowMaker;
+import data.generics.structures.Node;
+import data.generics.structures.SimpleList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -12,9 +14,14 @@ import javafx.scene.layout.VBox;
 
 public class Table {
 
-    TableView<ColumnCreator> table;
-    TextField nameInput, typeInput, fkInput, defaultInput;
+    TableView<RowMaker> table;
+    TextField nameInput, typeInput, fkInput, pkInput, defaultInput;
     ChoiceBox requiredChoice;
+    SimpleList<RowMaker> list;
+
+    public Table(SimpleList<RowMaker> list ){
+        this.list = list;
+    }
 
     public HBox addFooter(){
         return addFooterAux();
@@ -27,29 +34,34 @@ public class Table {
     private VBox addTableAux() {
 
         //Name column
-        TableColumn<ColumnCreator, String> nameColumn = new TableColumn<>("Nombre");
+        TableColumn<RowMaker, String> nameColumn = new TableColumn<>("Nombre");
         nameColumn.setMinWidth(200);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("columnName"));
 
-        TableColumn<ColumnCreator, Double> typeColumn = new TableColumn<>("Tipo de dato");
+        TableColumn<RowMaker, Double> typeColumn = new TableColumn<>("Tipo de dato");
         typeColumn.setMinWidth(100);
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("columnType"));
 
-        TableColumn<ColumnCreator, String> fkColumn = new TableColumn<>("Tipo especial");
+        TableColumn<RowMaker, String> fkColumn = new TableColumn<>("Tipo especial");
         fkColumn.setMinWidth(100);
         fkColumn.setCellValueFactory(new PropertyValueFactory<>("columnFK"));
 
-        TableColumn<ColumnCreator, String> requiredColumn = new TableColumn<>("Es requerido");
+        TableColumn<RowMaker, String> pkColumn = new TableColumn<>("Tipo especial");
+        pkColumn.setMinWidth(100);
+        pkColumn.setCellValueFactory(new PropertyValueFactory<>("columnPK"));
+
+        TableColumn<RowMaker, String> requiredColumn = new TableColumn<>("Es requerido");
         requiredColumn.setMinWidth(100);
         requiredColumn.setCellValueFactory(new PropertyValueFactory<>("columnRequired"));
 
-        TableColumn<ColumnCreator, String> defaultColumn = new TableColumn<>("Valor por defecto");
+        TableColumn<RowMaker, String> defaultColumn = new TableColumn<>("Valor por defecto");
         defaultColumn.setMinWidth(100);
         defaultColumn.setCellValueFactory(new PropertyValueFactory<>("columnDefault"));
 
         table = new TableView<>();
-        table.setItems(getProduct());
-        table.getColumns().addAll(nameColumn, typeColumn, fkColumn, requiredColumn, defaultColumn);
+        //añadir filas a la tabla
+        table.setItems(getRow());
+        table.getColumns().addAll(nameColumn, typeColumn, fkColumn, pkColumn, requiredColumn, defaultColumn);
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(table, addFooter());
@@ -69,6 +81,9 @@ public class Table {
         fkInput = new TextField();
         fkInput.setPromptText("Tipo especial");
 
+        pkInput = new TextField();
+        pkInput.setPromptText("Tipo especial");
+
         requiredChoice = new ChoiceBox<String>();
         requiredChoice.getItems().addAll("true", "false");
         requiredChoice.setValue("false");
@@ -85,15 +100,16 @@ public class Table {
         HBox hBox = new HBox();
         hBox.setPadding(new Insets(10, 10, 10, 10));
         hBox.setSpacing(10);
-        hBox.getChildren().addAll(nameInput, typeInput, fkInput, requiredChoice, defaultInput, addButton, deleteButton);
+        hBox.getChildren().addAll(nameInput, typeInput, fkInput, pkInput, requiredChoice, defaultInput, addButton, deleteButton);
         return hBox;
     }
     //Add button clicked
     private void addButtonClicked(){
-        ColumnCreator column = new ColumnCreator();
+        RowMaker column = new RowMaker();
         column.setColumnName(nameInput.getText());
         column.setColumnType(typeInput.getText());
         column.setColumnFK(fkInput.getText());
+        column.setColumnPK(pkInput.getText());
         String req = (String)requiredChoice.getValue();
         if (req == "true") {
             column.setColumnRequired(true);
@@ -101,30 +117,36 @@ public class Table {
             column.setColumnRequired(false);
         }
         column.setColumnDefault(defaultInput.getText());
+
+        list.addNode(column);
         table.getItems().add(column);
         nameInput.clear();
         typeInput.clear();
         fkInput.clear();
+        pkInput.clear();
         requiredChoice.getSelectionModel().clearSelection();
         defaultInput.clear();
     }
 
     //Delete button clicked
     private void deleteButtonClicked(){
-        ObservableList<ColumnCreator> productSelected, allProducts;
-        allProducts = table.getItems();
-        productSelected = table.getSelectionModel().getSelectedItems();
+        ObservableList<RowMaker> rowSelected, allRows;
+        allRows = table.getItems();
+        rowSelected = table.getSelectionModel().getSelectedItems();
 
-        productSelected.forEach(allProducts::remove);
+        rowSelected.forEach(allRows::remove);
     }
 
     //Get all of the products
-    private ObservableList<ColumnCreator> getProduct(){
-        ObservableList<ColumnCreator> products = FXCollections.observableArrayList();
-        products.add(new ColumnCreator("Código", "Number", "None", true, "None"));
-        products.add(new ColumnCreator("Nombre", "String", "None", true, "None"));
-        products.add(new ColumnCreator("Profesor", "String", "Cédula", false, "No asignado"));
-        return products;
+    private ObservableList<RowMaker> getRow(){
+        ObservableList<RowMaker> tableRows = FXCollections.observableArrayList();
+        int i = 0;
+        Node<RowMaker> temp = this.list.getHead();
+        while (temp != null){
+            tableRows.add(temp.getValue());
+            temp = temp.getNext();
+        }
+        return tableRows;
     }
 
 }

@@ -20,7 +20,7 @@ public class FileManager {
      * @param filePath: ruta dentro de la carpeta principal, BD\\tabla
      */
     public FileManager(String filePath){
-        this.filePath = new Setting().getMainFolderPath() + filePath;
+        this.filePath = Setting.getMainFolderPath() + "\\" + filePath;
     }
 
     private void printAllFiles(){
@@ -56,29 +56,62 @@ public class FileManager {
         return getListOfFoldersAux();
     }
 
-    private void createFolderAux(String folderName, String newfolderPath){
+    private void createFolderAux(String folderName){
         String newFile = "\\" + folderName;
         File file = new File(newFile);
         file.mkdir();
     }
 
     public void createFolder(String name){
-        createFolderAux(name, filePath);
+        createFolderAux(name);
     }
 
-    //filePath se refiere a la base de datos + tabla
-    private void writeToFileAux(String fileName, String filePath, String text){
-        String fileRoute = filePath + "\\" + fileName + ".json";
-        File file = new File(filePath + "\\" + fileName);
+    /**
+     *
+     * @param tableName: nombre del archivo
+     * @param nameBD: nombre de la BD a la que pertenece el archivo
+     * @param text: texto para escribir en el archivo
+     */
+    private void writeToFileAux(String tableName, String nameBD, String text){
+        System.out.println("write to file: " + this.filePath + tableName + ".json");
+        String fileRoute = this.filePath + "\\" + tableName + ".json";
+        //crea el archivo si no existe
+        File file = new File(this.filePath + "\\" + nameBD);
         FileWriter flWriter = null;
         BufferedWriter bfWriter = null;
         try {
-            /*if(!file.exists())
+            if(!file.exists())
             {
-                String folderName = filePath.substring(filePath.lastIndexOf("\\"));
-                createFolderAux(folderName, filePath.substring(0, filePath.lastIndexOf("\\")));
-            }*/
-            flWriter = new FileWriter(fileRoute, true);
+                createFolderAux(nameBD);
+            }
+            System.out.println("writing to: " + fileRoute);
+            flWriter = new FileWriter(fileRoute, false);
+
+            bfWriter = new BufferedWriter(flWriter);
+            bfWriter.write(text);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (bfWriter != null)
+                    bfWriter.close();
+
+                if (flWriter != null)
+                    flWriter.close();
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private void writeToExistentFileAux(String fileRoute, String text){
+        FileWriter flWriter = null;
+        BufferedWriter bfWriter = null;
+        try {
+            flWriter = new FileWriter(fileRoute, false);
 
             bfWriter = new BufferedWriter(flWriter);
             bfWriter.write(text);
@@ -102,6 +135,10 @@ public class FileManager {
 
     public void writeToFile(String fileName, String filePath, String json){
         writeToFileAux(fileName, filePath, json);
+    }
+
+    public void writeToExistentFile(String path, String text){
+        writeToExistentFileAux(path, text);
     }
 
     public String readFile(String path) throws IOException {
