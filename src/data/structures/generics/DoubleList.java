@@ -1,4 +1,4 @@
-package data.generics.structures;
+package data.structures.generics;
 
 public class DoubleList<T>{
     private DoubleNode<T> current, head, tail;

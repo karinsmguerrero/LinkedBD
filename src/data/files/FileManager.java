@@ -2,6 +2,8 @@ package data.files;
 
 
 import configuration.Setting;
+import data.structures.generics.CircularDoubleList;
+import data.structures.generics.DoubleList;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -34,6 +36,32 @@ public class FileManager {
                 System.out.println(files);
             }
         }
+    }
+
+    private CircularDoubleList<File> fileToListAux(){
+        CircularDoubleList<File> lnkListFiles = new CircularDoubleList<>();
+        File[] files = getListOfFilesFilesAux(this.filePath);
+        for(File file: files){
+            lnkListFiles.insertNodeToTail(file);
+        }
+        return lnkListFiles;
+    }
+
+    public CircularDoubleList<File> fileToList(){
+        return fileToListAux();
+    }
+
+    private DoubleList<File> folderToListAux(){
+        DoubleList<File> lnkListFolder = new DoubleList<>();
+        File[] folders = getListOfFoldersAux();
+        for(File folder: folders){
+            lnkListFolder.addNodeToTheTail(folder);
+        }
+        return lnkListFolder;
+    }
+
+    public DoubleList<File> folderToList(){
+        return folderToListAux();
     }
 
     private File[] getListOfFilesFilesAux(String folderPath){

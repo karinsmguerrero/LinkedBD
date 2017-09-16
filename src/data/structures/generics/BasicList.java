@@ -1,7 +1,13 @@
-package data.generics.structures;
+package data.structures.generics;
 
 abstract class BasicList<T> {
-    protected Node<T> head, tail;
+    protected Node<T> head;
+
+    public Node<T> getTail() {
+        return tail;
+    }
+
+    protected Node<T> tail;
     protected int size;
 
     protected BasicList(){

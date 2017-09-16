@@ -1,4 +1,4 @@
-package data.generics.structures;
+package data.structures.generics;
 
 public class Node<T> {
     private T value;

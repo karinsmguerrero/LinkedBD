@@ -1,4 +1,4 @@
-package data.generics.structures;
+package data.structures.generics;
 
 public class SimpleList<T> extends BasicList{
 
@@ -18,6 +18,10 @@ public class SimpleList<T> extends BasicList{
     }
 
     public void deleteNode(int index){
+        deleteNodeAux(index);
+    }
+
+    private void deleteNodeAux(int index){
         Node<T> actual = head;
 
         if (index == 0){
@@ -33,6 +37,34 @@ public class SimpleList<T> extends BasicList{
             if(index == size - 1){
                 tail = tail.getNext();
             }
+        }
+        size--;
+    }
+
+    public void deleteByContent(T search){
+        deleteByContentAux(search);
+    }
+
+    private void deleteByContentAux(T search){
+        Node<T> actual = head;
+        int i = 0;
+        while (actual != null){
+            if (actual.getValue() == search){
+                if (actual == head){
+                    head = actual.getNext();
+                }
+                else if(actual == tail){
+                    Node<T> temp = getNode(i);
+                    temp.setNext(tail.getNext());
+                    tail = temp;
+                }
+                else {
+                    Node<T> temp = getNode(i - 1);
+                    temp.setNext(actual.getNext());
+                }
+            }
+            i++;
+            actual = actual.getNext();
         }
         size--;
     }

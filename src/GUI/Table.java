@@ -1,8 +1,8 @@
 package GUI;
 
 import data.files.RowMaker;
-import data.generics.structures.Node;
-import data.generics.structures.SimpleList;
+import data.structures.generics.Node;
+import data.structures.generics.SimpleList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -126,6 +126,8 @@ public class Table {
         pkInput.clear();
         requiredChoice.getSelectionModel().clearSelection();
         defaultInput.clear();
+        list.printList();
+        System.out.println("-----------");
     }
 
     //Delete button clicked
@@ -135,6 +137,7 @@ public class Table {
         rowSelected = table.getSelectionModel().getSelectedItems();
 
         rowSelected.forEach(allRows::remove);
+        list.deleteByContent(rowSelected.get(0));
     }
 
     //Get all of the products

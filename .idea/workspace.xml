@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/files/ColumnCreator.java" afterPath="$PROJECT_DIR$/src/data/files/RowMaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MainWindow.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MainWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/Tree.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/Tree.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/configuration/Setting.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/configuration/Setting.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/FileManager.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/FileManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/JsonManager.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/JsonManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/BasicList.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/BasicList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/CircularDoubleList.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/CircularDoubleList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/CircularList.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/CircularList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/DoubleList.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/DoubleList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/DoubleNode.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/DoubleNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/Node.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/Node.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/data/generics/structures/SimpleList.java" afterPath="$PROJECT_DIR$/src/data/structures/generics/SimpleList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Table.java" afterPath="$PROJECT_DIR$/src/GUI/Table.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/configuration/Setting.java" afterPath="$PROJECT_DIR$/src/configuration/Setting.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/FileManager.java" afterPath="$PROJECT_DIR$/src/data/files/FileManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/JsonManager.java" afterPath="$PROJECT_DIR$/src/data/files/JsonManager.java" />
     </list>
@@ -74,12 +73,12 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="36" column="47" lean-forward="false" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+            <state relative-caret-position="322">
+              <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1576#1577#0" expanded="true" />
-                <element signature="e#1604#1605#0" expanded="true" />
+                <element signature="e#1412#1413#0" expanded="true" />
+                <element signature="e#1440#1441#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,36 +112,40 @@
       <file leaf-file-name="JsonManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/files/JsonManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="145" column="5" lean-forward="true" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+            <state relative-caret-position="187">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1109#1110#0" expanded="true" />
                 <element signature="e#1141#1142#0" expanded="true" />
                 <element signature="docComment;method#addJsonObjectAux#0;class#JsonManager#0" expanded="false" />
-                <element signature="method#addJsonObject#0;class#JsonManager#0" expanded="false" />
+                <element signature="method#addJsonObjectAux#0;class#JsonManager#0" expanded="false" />
+                <element signature="method#JsonToListAux#0;class#JsonManager#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/data/files/FileManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="209">
+              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
-                <element signature="e#439#440#0" expanded="true" />
-                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#535#536#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
                 <element signature="method#printAllFiles#0;class#FileManager#0" expanded="false" />
-                <element signature="method#getListOfFilesFilesAux#0;class#FileManager#0" expanded="false" />
+                <element signature="e#1349#1350#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
+                <element signature="e#1723#1724#0" expanded="true" />
+                <element signature="e#1763#1764#0" expanded="true" />
                 <element signature="method#getListOfFoldersAux#0;class#FileManager#0" expanded="false" />
                 <element signature="method#createFolderAux#0;class#FileManager#0" expanded="false" />
                 <element signature="docComment;method#writeToFileAux#0;class#FileManager#0" expanded="false" />
                 <element signature="method#writeToFileAux#0;class#FileManager#0" expanded="false" />
                 <element signature="method#writeToExistentFileAux#0;class#FileManager#0" expanded="false" />
-                <element signature="e#3910#3911#0" expanded="true" />
-                <element signature="e#3960#3961#0" expanded="true" />
+                <element signature="e#4789#4790#0" expanded="true" />
+                <element signature="e#4839#4840#0" expanded="true" />
                 <element signature="method#readFile#0;class#FileManager#0" expanded="false" />
               </folding>
             </state>
@@ -166,11 +169,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Table.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SimpleList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/structures/generics/SimpleList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="44" column="33" lean-forward="false" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+              <folding>
+                <element signature="e#421#422#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#976#977#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/structures/generics/BasicList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+              <folding>
+                <element signature="e#150#151#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Table.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Table.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="121" column="8" lean-forward="true" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
+            <state relative-caret-position="309">
+              <caret line="139" column="49" lean-forward="false" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
               <folding>
                 <element signature="e#655#656#0" expanded="true" />
                 <element signature="e#687#688#0" expanded="true" />
@@ -238,18 +268,19 @@
         <option value="$PROJECT_DIR$/src/sample/PaneTwo.fxml" />
         <option value="$PROJECT_DIR$/src/sample/MyMenusControl.java" />
         <option value="$PROJECT_DIR$/src/sample/MyMenus.fxml" />
-        <option value="$PROJECT_DIR$/src/data/generics/structures/SimpleList.java" />
         <option value="$PROJECT_DIR$/src/sample/ejemplo.java" />
         <option value="$PROJECT_DIR$/src/data/files/ejemplo.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/GUI/Tree.java" />
         <option value="$PROJECT_DIR$/src/configuration/Setting.java" />
-        <option value="$PROJECT_DIR$/src/data/files/FileManager.java" />
         <option value="$PROJECT_DIR$/src/data/files/ColumnCreator.java" />
         <option value="$PROJECT_DIR$/src/data/files/RowMaker.java" />
-        <option value="$PROJECT_DIR$/src/data/files/JsonManager.java" />
         <option value="$PROJECT_DIR$/src/GUI/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/data/generics/structures/SimpleList.java" />
+        <option value="$PROJECT_DIR$/src/data/generics/structures/BasicList.java" />
         <option value="$PROJECT_DIR$/src/GUI/Table.java" />
+        <option value="$PROJECT_DIR$/src/data/files/JsonManager.java" />
+        <option value="$PROJECT_DIR$/src/data/files/FileManager.java" />
       </list>
     </option>
   </component>
@@ -330,12 +361,6 @@
               <item name="LinkedBD_KMG" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LinkedBD_KMG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LinkedBD_KMG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -568,16 +593,15 @@
       <workItem from="1504415562159" duration="22824000" />
       <workItem from="1504700288205" duration="13411000" />
       <workItem from="1505434565132" duration="276000" />
-      <workItem from="1505435527863" duration="28514000" />
+      <workItem from="1505435527863" duration="34758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194765000" />
+    <option name="totallyTimeSpent" value="201009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -589,7 +613,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17203514" sideWeight="0.6703755" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17203514" sideWeight="0.6703755" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -643,8 +667,8 @@
           <caret line="44" column="40" lean-forward="true" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1440#1441#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -850,28 +874,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/structures/ejemplo.java" />
-    <entry file="file://$PROJECT_DIR$/src/data/structures/CircularList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="53" column="19" lean-forward="true" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/DoubleNode.java">
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/DoubleNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/CircularList.java">
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/CircularList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
           <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/DoubleList.java">
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/DoubleList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -889,31 +906,13 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/BasicList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="33" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/files/ejemplo.java" />
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/CircularDoubleList.java">
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/CircularDoubleList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="35" column="32" lean-forward="false" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
           <folding>
             <element signature="method#insertNodeToTailAux#0;class#CircularDoubleList#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/SimpleList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding>
-            <element signature="e#105#106#0" expanded="true" />
-            <element signature="e#128#129#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -960,7 +959,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/generics/structures/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
@@ -997,37 +996,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/files/FileManager.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#516#517#0" expanded="true" />
-            <element signature="method#printAllFiles#0;class#FileManager#0" expanded="false" />
-            <element signature="method#getListOfFilesFilesAux#0;class#FileManager#0" expanded="false" />
-            <element signature="method#getListOfFoldersAux#0;class#FileManager#0" expanded="false" />
-            <element signature="method#createFolderAux#0;class#FileManager#0" expanded="false" />
-            <element signature="docComment;method#writeToFileAux#0;class#FileManager#0" expanded="false" />
-            <element signature="method#writeToFileAux#0;class#FileManager#0" expanded="false" />
-            <element signature="method#writeToExistentFileAux#0;class#FileManager#0" expanded="false" />
-            <element signature="e#3910#3911#0" expanded="true" />
-            <element signature="e#3960#3961#0" expanded="true" />
-            <element signature="method#readFile#0;class#FileManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/files/JsonManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="145" column="5" lean-forward="true" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+        <state relative-caret-position="322">
+          <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1109#1110#0" expanded="true" />
-            <element signature="e#1141#1142#0" expanded="true" />
-            <element signature="docComment;method#addJsonObjectAux#0;class#JsonManager#0" expanded="false" />
-            <element signature="method#addJsonObject#0;class#JsonManager#0" expanded="false" />
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1440#1441#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1047,26 +1023,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/SimpleList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="36" column="47" lean-forward="false" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+        <state relative-caret-position="714">
+          <caret line="44" column="33" lean-forward="false" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/structures/generics/BasicList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding>
+            <element signature="e#150#151#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Table.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="121" column="8" lean-forward="true" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
+        <state relative-caret-position="309">
+          <caret line="139" column="49" lean-forward="false" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
           <folding>
             <element signature="e#655#656#0" expanded="true" />
             <element signature="e#687#688#0" expanded="true" />
             <element signature="method#addTableAux#0;class#Table#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/files/JsonManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="docComment;method#addJsonObjectAux#0;class#JsonManager#0" expanded="false" />
+            <element signature="method#addJsonObjectAux#0;class#JsonManager#0" expanded="false" />
+            <element signature="method#JsonToListAux#0;class#JsonManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/structures/CircularList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/files/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="method#printAllFiles#0;class#FileManager#0" expanded="false" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1723#1724#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="method#getListOfFoldersAux#0;class#FileManager#0" expanded="false" />
+            <element signature="method#createFolderAux#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#writeToFileAux#0;class#FileManager#0" expanded="false" />
+            <element signature="method#writeToFileAux#0;class#FileManager#0" expanded="false" />
+            <element signature="method#writeToExistentFileAux#0;class#FileManager#0" expanded="false" />
+            <element signature="e#4789#4790#0" expanded="true" />
+            <element signature="e#4839#4840#0" expanded="true" />
+            <element signature="method#readFile#0;class#FileManager#0" expanded="false" />
           </folding>
         </state>
       </provider>

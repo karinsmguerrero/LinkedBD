@@ -1,6 +1,6 @@
 package data.files;
 
-import data.generics.structures.SimpleList;
+import data.structures.generics.SimpleList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -91,6 +91,10 @@ public class JsonManager {
 
     public void addJsonObject(String key, String type, String FK, String PK, String required, String defaultValue) throws IOException, ParseException {
         addJsonObjectAux(key, type, FK, PK, required, defaultValue);
+    }
+
+    private void ListToJson(SimpleList<RowMaker> list){
+
     }
 
     private SimpleList<RowMaker> JsonToListAux() throws ParseException, IOException {

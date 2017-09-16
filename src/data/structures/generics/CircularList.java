@@ -1,4 +1,4 @@
-package data.generics.structures;
+package data.structures.generics;
 
 public class CircularList<T> extends BasicList{
 
