@@ -3,20 +3,10 @@ package data.files;
 import data.structures.generics.DoubleList;
 
 public class DBList {
-    private String fileName;
-    private DoubleList<TableList> dbList;
+    private static DoubleList<TableList> dbList;
 
-    public DBList(String fileName){
-        this.fileName = fileName;
+    public DBList(){
         setDbList();
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
     }
 
     public DoubleList<TableList> getDbList() {

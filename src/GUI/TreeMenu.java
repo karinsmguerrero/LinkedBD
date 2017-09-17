@@ -15,15 +15,11 @@ public class TreeMenu {
     //private FileManager files;
     private File[] listOfFolders;
 
-    private DBList dbList = new DBList("Random");
+    private DBList dbList = new DBList();
 
     private TreeView<String> treeMenu;
     private TreeItem<String> treeRoot;
 
-    /*public TreeMenu(){
-        files = new FileManager();
-        listOfFolders = files.getListOfFolders();
-    }*/
 
     public TreeView<String> createTree(){
         return createTreeAux();
