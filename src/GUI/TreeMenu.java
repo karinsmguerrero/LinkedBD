@@ -53,6 +53,14 @@ public class TreeMenu {
         return treeMenu;
     }
 
+    public void addBranches(TreeView menu){
+        menu.setShowRoot(false);
+        TreeItem root = new TreeItem();
+        root.setExpanded(true);
+        addBranch(root);
+        menu.setRoot(root);
+    }
+
     private void addBranch(TreeItem parent){
         DoubleNode<TableList> temp = dbList.getDbList().getHead();
 
@@ -71,25 +79,6 @@ public class TreeMenu {
             temp = temp.getNext();
         }
 
-        /*
-        for(DoubleNode<TableList> db: dbList.getDbList()) {
-            String itemName = item.getName();
-            int pos = itemName.lastIndexOf("."); //Busca el último . de la cadena
-            if (pos > 0) { //Si pos es -1 el caracter no existe
-                itemName = itemName.substring(0, pos); //Corta la cadena
-            }
-            TreeItem<String> branch = createBranch(itemName, parent);
-            System.out.println(item.getPath());
-            FileManager subFolder = new FileManager("\\" + item.getName(), "");
-            File[] subFolderList = subFolder.getListOfFolders();
-
-            FileManager subItems = new FileManager(item.getPath(), "");
-            File[] subItemDocs = subItems.getListOfFiles(item.getPath());
-            for (File document : subItemDocs) {
-                addLeave(branch, document);
-            }
-
-        }*/
     }
 
     private void addLeave(TreeItem parent, String item) {
