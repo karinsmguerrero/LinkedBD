@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<MenuBar
+        xmlns="http://javafx.com/javafx/8.0.40"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="GUI.MenuBarController"
+        fx:id="menuBar" BorderPane.alignment="CENTER">
+        <menus>
+            <Menu fx:id="newMenu" mnemonicParsing="false" text="Nuevo">
+                <items>
+                    <MenuItem fx:id="dbMenuItem" mnemonicParsing="false" text="Base de datos" onAction="#switchToCreteDB"/>
+                    <MenuItem fx:id="tableMenuItem" mnemonicParsing="false" text="Tabla" onAction="#switchToCreateTable" />
+                </items>
+            </Menu>
+            <Menu fx:id="searchMenu" mnemonicParsing="false" text="Busqueda" />
+            <Menu fx:id="helpMenu" mnemonicParsing="false" text="Ayuda">
+                <items>
+                    <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="Acerca de" />
+                </items>
+            </Menu>
+        </menus>
+</MenuBar>

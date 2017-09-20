@@ -14,7 +14,6 @@ public class FileManager {
     private String filePath;
     private String fileTable;
     private String fileDB;
-    private Charset utf8 = StandardCharsets.UTF_8;
 
     public FileManager(){
         this("", "");
@@ -46,15 +45,18 @@ public class FileManager {
 
     private CircularDoubleList<FieldList> fileToListAux(){
         CircularDoubleList<FieldList> lnkListFiles = new CircularDoubleList<>();
+        System.out.println("file To list aux: " + this.filePath);
         File[] files = getListOfFilesFilesAux(this.filePath);
-        for(File file: files){
-            String tableName = file.getName();
-            int pos = tableName.lastIndexOf("."); //Busca el último . de la cadena
-            if (pos > 0) { //Si pos es -1 el caracter no existe
-                tableName = tableName.substring(0, pos); //Corta la cadena
+        if(files != null) {
+            for (File file : files) {
+                String tableName = file.getName();
+                int pos = tableName.lastIndexOf("."); //Busca el último . de la cadena
+                if (pos > 0) { //Si pos es -1 el caracter no existe
+                    tableName = tableName.substring(0, pos); //Corta la cadena
+                }
+                FieldList fldList = new FieldList(tableName, tableName, fileDB);
+                lnkListFiles.insertNodeToTail(fldList);
             }
-            FieldList fldList = new FieldList(tableName, tableName, fileDB);
-            lnkListFiles.insertNodeToTail(fldList);
         }
         return lnkListFiles;
     }

@@ -8,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.NewBDController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="640.0" spacing="5.0">
          <children>
             <Label text="Nueva base de datos:" />
             <TextField fx:id="txtDB" />
-            <Button fx:id="btnCreateBD" mnemonicParsing="false" text="Crear" />
+            <Button fx:id="btnCreateBD" mnemonicParsing="false" text="Crear" onAction="#btnCreateBD_click" />
          </children>
       </HBox>
    </children>

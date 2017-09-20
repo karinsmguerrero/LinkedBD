@@ -18,6 +18,10 @@ public class TableList {
         return this.fileDB;
     }
 
+    public void setFileDB(String fileDB){
+        this.fileDB = fileDB;
+    }
+
     public String getFileName() {
         return fileName;
     }

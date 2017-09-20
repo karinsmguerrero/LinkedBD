@@ -12,46 +12,7 @@ import java.io.File;
 
 public class TreeMenu {
 
-    //private FileManager files;
-    private File[] listOfFolders;
-
     private DBList dbList = new DBList();
-
-    private TreeView<String> treeMenu;
-    private TreeItem<String> treeRoot;
-
-
-    public TreeView<String> createTree(){
-        return createTreeAux();
-    }
-
-    private TreeView<String> createTreeAux(){
-        //Crear la raiz del arbol
-        treeRoot = new TreeItem<>();
-        treeRoot.setExpanded(true);
-        //Crear el arbol y esconder la raiz
-        treeMenu = new TreeView<String>(treeRoot);
-        treeMenu.setShowRoot(false);
-
-        //Añadir las ramas desde un archivo
-        addBranch(treeRoot);
-
-        //Codigo de tutorial de oracle
-        ContextMenu contextMenu = new ContextMenu();
-
-        MenuItem item1 = new MenuItem("Crear nueva base de datos");
-        item1.setOnAction(e -> System.out.println("Created"));
-        PopUp popUpWindow = new PopUp();
-        String path;
-
-        MenuItem item2 = new MenuItem("Eliminar base de datos");
-        item2.setOnAction(e -> System.out.println("Deleted"));
-        contextMenu.getItems().addAll(item1, item2);
-
-        treeMenu.setContextMenu(contextMenu);
-
-        return treeMenu;
-    }
 
     public void addBranches(TreeView menu){
         menu.setShowRoot(false);
@@ -65,14 +26,12 @@ public class TreeMenu {
         DoubleNode<TableList> temp = dbList.getDbList().getHead();
 
         for (int i = 0; i < dbList.getDbList().getSize(); i++){
-            System.out.println(temp.getValue().getFileName());
             String dbName = temp.getValue().getFileName();
             TreeItem<String> branch = createBranch(dbName, parent);
 
             DoubleNode<FieldList> leave = temp.getValue().getFileList().getHead();
 
             for(int z = 0; z < temp.getValue().getFileList().getSize(); z++) {
-                System.out.println(leave.getValue().getFileName());
                 addLeave(branch, leave.getValue().getFileName());
                 leave = leave.getNext();
             }

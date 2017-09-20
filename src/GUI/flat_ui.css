@@ -2,9 +2,11 @@
 *{
     -my-table-header: #868686;
     -my-lightGray: #e6e6e6;
+    -navy-blue: #2c3e50;
+    -light-gray: #D3D3D3;
 }
 .root{
-    -fx-background-color: #D3D3D3;
+    -fx-background-color: -light-gray;
     /*font-family: "A little sunshine";
     -fx-font-family: "A little sunshine";*/
 }
@@ -16,14 +18,16 @@
 .menu .label{
     -fx-text-fill: #FCFCF9;
 }
-.menu-item{
+
+.menu .menu-item{
     -fx-background-color: #2c3e50;
-    -fx-border-color: #2c3e50;
+    -fx-border-color: transparent;
 }
 
+
 .menu .label{
-    -fx-background-color: #2c3e50;
-    -fx-border-color: #2c3e50;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
     -fx-text-fill: #FCFCF9;
 }
 

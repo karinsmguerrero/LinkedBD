@@ -21,53 +21,41 @@ public class MainWindow extends Application {
     Scene welcomeScene;
     JsonManager jm;*/
 
-    public MainWindow() throws IOException {
-    }
+    // Creating a static root to pass to the controller
+    private static BorderPane root = new BorderPane();
 
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
-    BorderPane root = loader.load();
+    /**
+     * Just a root getter for the controller to use
+     */
+    public static BorderPane getRoot() {
+        return root;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         // loading FXML resources
+        URL treeMenuUrl = getClass().getResource("treeMenu.fxml");
+        TreeView<String> treeMenu = FXMLLoader.load(treeMenuUrl);
 
-        URL centralPane = getClass().getResource("welcomeWindow.fxml");
-        AnchorPane welcomeWindow = FXMLLoader.load(centralPane);
+        URL welcomeWindowUrl = getClass().getResource("welcomeWindow.fxml");
+        AnchorPane welcomeWindow = FXMLLoader.load(welcomeWindowUrl);
+
+        URL menuBarUrl = getClass().getResource("MenuBar.fxml");
+        MenuBar menuBar = FXMLLoader.load(menuBarUrl);
 
 
-        // constructing our scene using the root
+        // constructing our scene using the static root
+        root.setTop(menuBar);
         root.setCenter(welcomeWindow);
+        root.setLeft(treeMenu);
 
         Scene scene = new Scene(root, 1000, 600);
         scene.getStylesheets().add("GUI/flat_ui.css");
 
         primaryStage.setScene(scene);
-        primaryStage.show();
-        /*layoutLeft = new VBox();
-        TreeMenu folderTree = new TreeMenu();
-        TreeView<String> treeMenu = folderTree.createTree();
-        VBox.setVgrow(treeMenu, Priority.ALWAYS);
-        layoutLeft.getChildren().addAll(treeMenu);
-
-        layout = new BorderPane();
-        layout.setLeft(layoutLeft);
-        jm = new JsonManager("UNED", "cursos");
-        TableView tableView = new TableView(jm.JsonToList());
-        layout.setCenter(tableView.addTable());
-        OptionMenu menu = new OptionMenu();
-        layout.setTop(menu.createMenuBar());
-
-        welcomeScene = new Scene(layout, 1300, 600);
-        welcomeScene.getStylesheets().add("GUI/flat_ui.css");
         primaryStage.setTitle("Linked BD");
-        primaryStage.setScene(welcomeScene);
-        //primaryStage.setMaximized(true);
-        primaryStage.show();*/
-    }
-
-    public BorderPane getRoot() {
-        return root;
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

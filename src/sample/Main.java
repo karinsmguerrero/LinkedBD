@@ -37,15 +37,11 @@ public class Main extends Application {
         URL paneOneUrl = getClass().getResource("PaneOne.fxml");
         AnchorPane paneOne = FXMLLoader.load( paneOneUrl );
 
-        URL treePaneUrl = getClass().getResource("TreeMenu.fxml");
-        AnchorPane treePane = FXMLLoader.load(treePaneUrl);
-
 
         // constructing our scene using the static root
 
         root.setTop(bar);
         root.setCenter(paneOne);
-        root.setLeft(treePane);
 
         Scene scene = new Scene(root, 740, 480);
         scene.getStylesheets().add("GUI/flat_ui.css");
