@@ -6,18 +6,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<MenuBar
-        xmlns="http://javafx.com/javafx/8.0.40"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="GUI.MenuBarController"
-        fx:id="menuBar" BorderPane.alignment="CENTER">
+<MenuBar fx:id="menuBar" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MenuBarController">
         <menus>
             <Menu fx:id="newMenu" mnemonicParsing="false" text="Nuevo">
                 <items>
-                    <MenuItem fx:id="dbMenuItem" mnemonicParsing="false" text="Base de datos" onAction="#switchToCreteDB"/>
-                    <MenuItem fx:id="tableMenuItem" mnemonicParsing="false" text="Tabla" onAction="#switchToCreateTable" />
+                    <MenuItem fx:id="dbMenuItem" mnemonicParsing="false" onAction="#switchToCreteDB" text="Base de datos" />
+                    <MenuItem fx:id="tableMenuItem" mnemonicParsing="false" onAction="#switchToCreateTable" text="Tabla" />
                 </items>
             </Menu>
+      <Menu fx:id="editionMenu" mnemonicParsing="false" text="Edición" >
+            <items>
+                <MenuItem fx:id="editionMenuItem" mnemonicParsing="false" onAction="#switchToEditionPage" text="Editar tabla" />
+            </items>
+      </Menu>
             <Menu fx:id="searchMenu" mnemonicParsing="false" text="Busqueda" />
             <Menu fx:id="helpMenu" mnemonicParsing="false" text="Ayuda">
                 <items>

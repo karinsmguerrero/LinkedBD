@@ -2,7 +2,10 @@ package GUI;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
+import javafx.util.converter.DefaultStringConverter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +18,18 @@ public class TreeMenuController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadTreeItems();
+        treeMenu.setEditable(true);
+        treeMenu.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
+            private final MyContextMenu contextMenu = new MyContextMenu();
+            private final StringConverter converter = new DefaultStringConverter();
+
+            @Override
+            public TreeCell<String> call(TreeView<String> param) {
+                return new CustomTreeCell(contextMenu, converter);
+            }
+
+        });
+
         System.out.println("loading tree...");
     }
 
@@ -24,4 +39,6 @@ public class TreeMenuController implements Initializable{
         System.out.println(treeMenu);
         tree.addBranches(treeMenu);
     }
+
+
 }

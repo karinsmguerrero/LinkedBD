@@ -4,6 +4,7 @@ package data.files;
 import configuration.Setting;
 import data.structures.generics.CircularDoubleList;
 import data.structures.generics.DoubleList;
+import data.structures.generics.SimpleList;
 import javafx.scene.control.Tab;
 
 import java.io.*;
@@ -14,6 +15,7 @@ public class FileManager {
     private String filePath;
     private String fileTable;
     private String fileDB;
+
 
     public FileManager(){
         this("", "");

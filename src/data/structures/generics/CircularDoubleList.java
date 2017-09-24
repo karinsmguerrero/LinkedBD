@@ -92,4 +92,19 @@ public class CircularDoubleList<T> {
     public int getSize() {
         return size;
     }
+
+    public DoubleNode<T> getNodeByValue(T value){
+        return getNodeByValueAux(value);
+    }
+
+    private DoubleNode<T> getNodeByValueAux(T value){
+        DoubleNode<T> temp = head;
+        for (int i = 0; i < size; i++){
+            if(temp.getValue() == value){
+                return temp;
+            }
+            temp = temp.getNext();
+        }
+        return null;
+    }
 }
