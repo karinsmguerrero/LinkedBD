@@ -14,6 +14,10 @@ public class TableList {
         setObjectList();
     }
 
+    public TableList(){
+
+    }
+
     public String getFileDB(){
         return this.fileDB;
     }
@@ -43,5 +47,9 @@ public class TableList {
         //public FileManager(String fileTable, String fileDB)
         FileManager flMng = new FileManager("", fileDB);
         fileList = flMng.fileToList();
+    }
+
+    public void setObjectList(CircularDoubleList<FieldList> fileList){
+        this.fileList = fileList;
     }
 }

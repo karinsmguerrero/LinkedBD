@@ -53,7 +53,7 @@
              <HBox spacing="5.0">
                  <children>
                      <TextField fx:id="txtName" />
-                     <TextField fx:id="txtType" layoutX="10.0" layoutY="10.0" />
+                  <ChoiceBox fx:id="txtType" prefWidth="150.0" />
                      <TextField fx:id="txtFK" layoutX="10.0" layoutY="10.0" />
                      <TextField fx:id="txtPK" />
                      <ChoiceBox fx:id="txtRequired" prefHeight="25.0" prefWidth="141.0" />

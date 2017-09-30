@@ -1,6 +1,6 @@
 package data.files;
 
-import data.structures.generics.SimpleList;
+import data.structures.generics.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -93,8 +93,42 @@ public class JsonManager {
         addJsonObjectAux(key, type, FK, PK, required, defaultValue);
     }
 
-    private void ListToJson(SimpleList<RowMaker> list){
-
+    public String ListToJsonString(SimpleList<RowMaker> list, String tableName){
+        return ListToJsonStringAux(list, tableName);
+    }
+    private String ListToJsonStringAux(SimpleList<RowMaker> list, String tableName){
+        Node<RowMaker> temp = list.getHead();
+        JSONObject root = new JSONObject();
+        JSONArray rootArray = new JSONArray();
+        for(int i = 0; i < list.getSize(); i++){
+            RowMaker rowMaker = temp.getValue();
+            //Reconstruir un objeto json a partir de cada RowMaker
+            JSONObject row = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+            JSONObject name = new JSONObject();
+            name.put("Name", rowMaker.getColumnName());
+            JSONObject type = new JSONObject();
+            type.put("Type", rowMaker.getColumnType());
+            JSONObject fk = new JSONObject();
+            fk.put("Fk", rowMaker.getColumnFK());
+            JSONObject pk = new JSONObject();
+            pk.put("Pk", rowMaker.getColumnPK());
+            JSONObject required = new JSONObject();
+            required.put("Required", rowMaker.isColumnRequired()? "true":"false");
+            JSONObject def = new JSONObject();
+            def.put("Default", rowMaker.getColumnDefault());
+            jsonArray.add(name);
+            jsonArray.add(type);
+            jsonArray.add(fk);
+            jsonArray.add(pk);
+            jsonArray.add(required);
+            jsonArray.add(def);
+            row.put("row", jsonArray);
+            rootArray.add(row);
+            temp = temp.getNext();
+        }
+        root.put(tableName, rootArray);
+        return root.toJSONString();
     }
 
     private SimpleList<RowMaker> JsonToListAux() throws ParseException, IOException {

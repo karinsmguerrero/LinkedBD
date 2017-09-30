@@ -16,6 +16,9 @@ public class TreeMenuController implements Initializable{
     private TreeView<String> treeMenu;
 
     @Override
+    /**
+     * Codigo tomado de https://stackoverflow.com/questions/35045725/creating-a-custom-tree-with-javafx by fabian
+     */
     public void initialize(URL location, ResourceBundle resources) {
         loadTreeItems();
         treeMenu.setEditable(true);
@@ -27,17 +30,17 @@ public class TreeMenuController implements Initializable{
             public TreeCell<String> call(TreeView<String> param) {
                 return new CustomTreeCell(contextMenu, converter);
             }
-
         });
-
-        System.out.println("loading tree...");
     }
 
     // loads some strings into the tree in the application UI.
-    public void loadTreeItems() {
+    private  void loadTreeItems() {
         TreeMenu tree = new TreeMenu();
-        System.out.println(treeMenu);
         tree.addBranches(treeMenu);
+    }
+
+    public TreeView<String> getTreeMenu(){
+        return treeMenu;
     }
 
 

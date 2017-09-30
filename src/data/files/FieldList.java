@@ -23,6 +23,18 @@ public class FieldList {
         setObjectList();
     }
 
+    public FieldList(){
+
+    }
+
+    public void setFileDB(String fileDB){
+        this.fileDB = fileDB;
+    }
+
+    public void setFileTable(String fileTable){
+        this.fileTable = fileTable;
+    }
+
     public String getFileTable() {
         return fileTable;
     }
@@ -51,5 +63,9 @@ public class FieldList {
         //public JsonManager(String DB, String tableName)
         JsonManager jsMng = new JsonManager(fileDB, fileTable);
         objectList = jsMng.JsonToList();
+    }
+
+    public void setObjectList(SimpleList<RowMaker> list){
+        this.objectList = list;
     }
 }

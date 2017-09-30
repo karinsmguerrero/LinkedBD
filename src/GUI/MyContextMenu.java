@@ -2,7 +2,9 @@ package GUI;
 
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-
+/**
+ * Codigo tomado de https://stackoverflow.com/questions/35045725/creating-a-custom-tree-with-javafx por fabian
+ */
 public class MyContextMenu {
     private ContextMenu contextMenu, DBContextMenu;
     private MenuItem add, addField, updateTable;

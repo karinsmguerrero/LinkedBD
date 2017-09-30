@@ -33,6 +33,7 @@ public class MainWindow extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        DBList list = new DBList();
 
         // loading FXML resources
         URL treeMenuUrl = getClass().getResource("treeMenu.fxml");

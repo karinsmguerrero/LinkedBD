@@ -14,9 +14,11 @@ import java.io.File;
 
 public class TreeMenu {
 
-    private DBList dbList = new DBList();
+    public void addBranches(TreeView<String> menu){
+        addBranchesAux(menu);
+    }
 
-    public void addBranches(TreeView menu){
+    private void addBranchesAux(TreeView<String> menu){
         menu.setShowRoot(false);
         TreeItem root = new TreeItem();
         root.setExpanded(true);
@@ -24,10 +26,10 @@ public class TreeMenu {
         menu.setRoot(root);
     }
 
-    private void addBranch(TreeItem parent){
-        DoubleNode<TableList> temp = dbList.getDbList().getHead();
+    private void addBranch(TreeItem<String> parent){
+        DoubleNode<TableList> temp = DBList.getDbList().getHead();
 
-        for (int i = 0; i < dbList.getDbList().getSize(); i++){
+        for (int i = 0; i < DBList.getDbList().getSize(); i++){
             String dbName = temp.getValue().getFileName();
             TreeItem<String> branch = createBranch(dbName, parent, "DB");
 
@@ -42,7 +44,7 @@ public class TreeMenu {
 
     }
 
-    private void addLeave(TreeItem parent, String item) {
+    private void addLeave(TreeItem<String> parent, String item) {
         int pos = item.lastIndexOf("."); //Busca el último . de la cadena
         if (pos > 0) { //Si pos es -1 el caracter no existe
             item = item.substring(0, pos); //Corta la cadena
@@ -50,24 +52,20 @@ public class TreeMenu {
         createBranch(item, parent, "table");
     }
 
-    //Create branches
+    /**
+     * Código tomado del tutorial JavaFx Java GUI tutorial - 16 - treeview por thenewboston
+     * link: https://www.youtube.com/watch?v=SvmSNbXQSnQ&list=PL6gx4Cwl9DGBzfXLWLSYVy8EbTdpGbUIG&index=16
+     *
+     * @param title
+     * @param parent
+     * @param context
+     * @return
+     */
     private TreeItem<String> createBranch(String title, TreeItem<String> parent, String context) {
         TreeItem<String> item = new TreeItem<>(title);
         item.setExpanded(true);
         parent.getChildren().add(item);
         return item;
-
-        /*Mostrar un listado con todos los objetos en memoria. En este caso se deben considerar las llaves
-foráneas también.
-● Agregar un nuevo objeto JSON al documento: cuando se agrega un nuevo objeto, se debe validar que
-el objeto que se trata de insertar cumpla con la estructura del documento definido previamente. El
-objeto se agrega en memoria.
-● Eliminar todos los objetos JSON del documento. Elimina los documentos en memoria.
-● Eliminar un objeto al buscarlo por llave. Elimina un objeto en memoria.
-● Buscar objetos por cualquier atributo en memoria.
-● Actualizar uno o más objetos. Se especifica los atributos por actualizar. Se especifica también una
-condición de búsqueda que indique cuáles objetos actualizar. La actualización se realiza en los
-objetos en memoria.*/
 
 /*        if(context == "table") {
             Menu tableMenu = new Menu();

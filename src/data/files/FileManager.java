@@ -4,6 +4,7 @@ package data.files;
 import configuration.Setting;
 import data.structures.generics.CircularDoubleList;
 import data.structures.generics.DoubleList;
+import data.structures.generics.DoubleNode;
 import data.structures.generics.SimpleList;
 import javafx.scene.control.Tab;
 
@@ -12,7 +13,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class FileManager {
-    private String filePath;
+    private String filePath = Setting.getMainFolderPath() ;
     private String fileTable;
     private String fileDB;
 
@@ -27,7 +28,7 @@ public class FileManager {
      * @param fileDB: nombre de la base de datos
      */
     public FileManager(String fileTable, String fileDB){
-        this.filePath = Setting.getMainFolderPath() + "\\" + fileDB + "\\" + fileTable;
+        this.filePath += "\\" + fileDB + "\\" + fileTable;
         this.fileDB = fileDB;
         this.fileTable = fileTable;
     }
@@ -47,7 +48,6 @@ public class FileManager {
 
     private CircularDoubleList<FieldList> fileToListAux(){
         CircularDoubleList<FieldList> lnkListFiles = new CircularDoubleList<>();
-        System.out.println("file To list aux: " + this.filePath);
         File[] files = getListOfFilesFilesAux(this.filePath);
         if(files != null) {
             for (File file : files) {
@@ -117,7 +117,6 @@ public class FileManager {
      * @param text: texto para escribir en el archivo
      */
     private void writeToFileAux(String tableName, String nameBD, String text){
-        System.out.println("write to file: " + this.filePath + tableName + ".json");
         String fileRoute = this.filePath + "\\" + tableName + ".json";
         //crea el archivo si no existe
         File file = new File(this.filePath + "\\" + nameBD);
@@ -128,7 +127,7 @@ public class FileManager {
             {
                 createFolderAux(nameBD);
             }
-            System.out.println("writing to: " + fileRoute);
+            System.out.println("Write to file aux fileRoute: " + fileRoute);
             flWriter = new FileWriter(fileRoute, false);
 
             bfWriter = new BufferedWriter(flWriter);

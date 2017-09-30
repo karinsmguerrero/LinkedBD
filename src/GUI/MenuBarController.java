@@ -1,5 +1,8 @@
 package GUI;
 
+import data.files.Commit;
+import data.files.DBList;
+import data.files.FileManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -10,6 +13,8 @@ import java.io.IOException;
 
 public class MenuBarController {
 
+    Commit commitClass;
+
     @FXML
     private MenuBar menuBar;
 
@@ -17,7 +22,10 @@ public class MenuBarController {
     private Menu searchMenu, newMenu, helpMenu, editionMenu;
 
     @FXML
-    private MenuItem dbMenuItem, tableMenuItem, aboutMenuItem;
+    private MenuItem dbMenuItem, tableMenuItem, aboutMenuItem, commitChangesMenuItem;
+
+    @FXML
+    private Menu commitMenu;
 
 
     @FXML
@@ -57,5 +65,13 @@ public class MenuBarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void commit_clicked(){
+        System.out.println("Commit...");
+        DBList dbList = new DBList();
+        commitClass = new Commit();
+        commitClass.commitList(dbList.getDbList());
     }
 }

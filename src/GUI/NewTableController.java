@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.annotation.processing.RoundEnvironment;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,50 +22,63 @@ import java.util.ResourceBundle;
 public class NewTableController implements Initializable{
 
     @FXML
-    private TextField txtTableName, txtName, txtType, txtFK, txtPK, txtDefault;
+    private TextField txtTableName, txtName, txtFK, txtPK, txtDefault;
 
     @FXML
-    private Button btnCreateTable, btnAdd, btnDelete;
+    private Button btnCreateTable, btnAdd;
 
     @FXML
     private TableView<RowMaker> tblViewRows;
 
     @FXML
-    private ChoiceBox<String> txtRequired, choiceBD;
+    private ChoiceBox<String> txtRequired, choiceBD, choiceType;
 
-    DBList list = new DBList();
-    TableList tableList;
-    RowMaker rowMaker;
-    FieldList fieldList;
+    @FXML
+    private Label lblAlert;
+
+    private FieldList fieldList;
+    private TableList tableList;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DoubleNode<TableList> temp = list.getDbList().getHead();
-        for (int i = 0; i < list.getDbList().getSize(); i++){
+        DoubleNode<TableList> temp = DBList.getDbList().getHead();
+        for (int i = 0; i < DBList.getDbList().getSize(); i++){
             choiceBD.getItems().add(temp.getValue().getFileName());
-            System.out.println(choiceBD.getItems());
             temp = temp.getNext();
         }
-        addTable(list.getDbList().getHead().getValue().getFileList().getHead().getValue().getObjectList());
         choiceBD.setValue(choiceBD.getItems().get(0));
         txtRequired.getItems().addAll("true", "false");
-        txtRequired.setValue(txtRequired.getItems().get(0));
+        choiceType.getItems().addAll("String", "Int", "Boolean", "Date", "Double");
     }
 
     private void createTable( ) throws IOException {
-        DBList dbList = new DBList();
+        /*Estructura para agregar nodos
+        DBList.DoubleList -> DoubleList.Add(TableList) -> TableList.CircularList -> CircularList.Add(FieldList) ->
+        FieldList.SimpleList -> SimpleList.add(RowMaker)
+        */
 
-        tableList.setFileName(txtTableName.getText());
-        tableList.setFileDB(choiceBD.getValue());
-        System.out.println("choiceDB value: " + choiceBD.getValue());
-        dbList.getDbList().addNodeToTheTail(tableList);
+        tblViewRows.getItems().clear();
+        tblViewRows.getColumns().clear();
 
-        System.out.println("Table creada");
-        //posible error
-        URL treeMenuUrl = getClass().getResource("treeMenu.fxml");
-        TreeView<String> treeMenu = FXMLLoader.load(treeMenuUrl);
-        MainWindow.getRoot().setLeft(treeMenu);
+        SimpleList<RowMaker> simpleList = new SimpleList<>();
+
+        fieldList = new FieldList();
+        fieldList.setFileDB(choiceBD.getValue());
+        fieldList.setFileName(txtTableName.getText());
+        fieldList.setFileTable(txtTableName.getText());
+        fieldList.setObjectList(simpleList);
+
+        DoubleNode<TableList> temp = DBList.getDbList().getHead();
+        for (int i = 0; i < DBList.getDbList().getSize(); i++){
+          if(temp.getValue().getFileDB().equals(choiceBD.getValue())){
+              temp.getValue().getFileList().insertNodeToTail(fieldList);
+          }
+          temp = temp.getNext();
+        }
+        System.out.println("Tabla creada");
+        DBList.printAll();
+
     }
 
     @FXML
@@ -74,26 +88,42 @@ public class NewTableController implements Initializable{
 
     @FXML
     private void btnAdd_click(){
-        rowMaker = new RowMaker();
-        rowMaker.setColumnName(txtName.getText());
-        rowMaker.setColumnType(txtType.getText());
-        rowMaker.setColumnFK(txtFK.getText());
-        rowMaker.setColumnPK(txtPK.getText());
-        if (txtRequired.getSelectionModel().getSelectedItem() == "true")
-            rowMaker.setColumnRequired(true);
-        else
-            rowMaker.setColumnRequired(false);
-        rowMaker.setColumnDefault(txtDefault.getText());
-        fieldList = new FieldList(tableList.getFileName(), tableList.getFileName(), tableList.getFileDB());
+        addRow();
+    }
 
-        tblViewRows.getItems().add(rowMaker);
-        txtName.clear();
-        txtType.clear();
-        txtFK.clear();
-        txtPK.clear();
-        txtRequired.getSelectionModel().clearSelection();
-        txtDefault.clear();
-        System.out.println("Row added");
+    /**
+     * Obtiene los datos de los textFields, los añade a un objeto de tipo RowMaker y agrega un nuevo nodo a la lista
+     */
+    private void addRow(){
+        if(checkValid()) {
+            lblAlert.setText("");
+
+            RowMaker rowMaker = new RowMaker();
+            rowMaker.setColumnName(txtName.getText());
+            rowMaker.setColumnType(choiceType.getValue());
+            rowMaker.setColumnFK(txtFK.getText());
+            rowMaker.setColumnPK(txtPK.getText());
+            if (txtRequired.getSelectionModel().getSelectedItem().equals("true"))
+                rowMaker.setColumnRequired(true);
+            else
+                rowMaker.setColumnRequired(false);
+                rowMaker.setColumnDefault(txtDefault.getText());
+
+            fieldList.getObjectList().addNode(rowMaker);
+            addTable(fieldList.getObjectList());
+
+            txtName.clear();
+            choiceType.getSelectionModel().clearSelection();
+            txtFK.clear();
+            txtPK.clear();
+            txtRequired.getSelectionModel().clearSelection();
+            txtDefault.clear();
+
+            System.out.println("Row added");
+        }
+        else {
+            lblAlert.setText("Datos insuficientes");
+        }
     }
 
     public void addTable(SimpleList<RowMaker> list){
@@ -141,5 +171,12 @@ public class NewTableController implements Initializable{
             temp = temp.getNext();
         }
         return tableRows;
+    }
+
+    private boolean checkValid(){
+        return !txtName.getText().isEmpty() && !choiceType.getValue().isEmpty() &&
+                !txtFK.getText().isEmpty() && !txtPK.getText().isEmpty() &&
+                !txtRequired.getValue().isEmpty() && !txtDefault.getText().isEmpty() &&
+                !txtTableName.getText().isEmpty();
     }
 }
