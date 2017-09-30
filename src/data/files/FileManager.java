@@ -127,7 +127,6 @@ public class FileManager {
             {
                 createFolderAux(nameBD);
             }
-            System.out.println("Write to file aux fileRoute: " + fileRoute);
             flWriter = new FileWriter(fileRoute, false);
 
             bfWriter = new BufferedWriter(flWriter);

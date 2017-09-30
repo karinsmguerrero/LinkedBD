@@ -27,6 +27,19 @@ public class MenuBarController {
     @FXML
     private Menu commitMenu;
 
+    @FXML
+    private void switchToSearch(){
+        try {
+            AnchorPane search = FXMLLoader.load(getClass().getResource("SearchWindow.fxml"));
+
+            BorderPane border = MainWindow.getRoot();
+            border.setCenter(search);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     private void switchToCreteDB() {

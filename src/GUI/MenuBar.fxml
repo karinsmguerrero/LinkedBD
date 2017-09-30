@@ -19,7 +19,10 @@
                 <MenuItem fx:id="editionMenuItem" mnemonicParsing="false" onAction="#switchToEditionPage" text="Editar tabla" />
             </items>
       </Menu>
-            <Menu fx:id="searchMenu" mnemonicParsing="false" text="Busqueda" />
+            <Menu fx:id="searchMenu" mnemonicParsing="false" text="Busqueda">
+         <items>
+            <MenuItem fx:id="searchMenuItem" mnemonicParsing="false" text="Buscar" onAction="#switchToSearch"/>
+         </items></Menu>
       <Menu id="btnCommit" fx:id="commitMenu" mnemonicParsing="false" text="Commit">
          <items>
             <MenuItem fx:id="commitChangesMenuItem" mnemonicParsing="false" onAction="#commit_clicked" text="Hacer commit" />
