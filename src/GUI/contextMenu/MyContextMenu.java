@@ -1,4 +1,4 @@
-package GUI;
+package GUI.contextMenu;
 
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;

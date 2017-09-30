@@ -3,23 +3,15 @@ package GUI;
 import data.files.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 
 public class MainWindow extends Application {
-    /*HBox layoutTop;
-    VBox layoutLeft;
-    BorderPane layout;
-
-    Scene welcomeScene;
-    JsonManager jm;*/
 
     // Creating a static root to pass to the controller
     private static BorderPane root = new BorderPane();
@@ -52,7 +44,7 @@ public class MainWindow extends Application {
         root.setLeft(treeMenu);
 
         Scene scene = new Scene(root, 1000, 600);
-        scene.getStylesheets().add("GUI/flat_ui.css");
+        scene.getStylesheets().add("GUI/css/flat_ui.css");
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Linked BD");

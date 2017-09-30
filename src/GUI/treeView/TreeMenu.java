@@ -1,4 +1,4 @@
-package GUI;
+package GUI.treeView;
 
 //import data.files.FileManager;
 import data.files.DBList;

@@ -13,13 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 
 import javax.annotation.processing.RoundEnvironment;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewTableController implements Initializable{
+public class NewTableController extends WindowUtility implements Initializable{
 
     @FXML
     private TextField txtTableName, txtName, txtFK, txtPK, txtDefault;
@@ -38,7 +39,6 @@ public class NewTableController implements Initializable{
 
     private FieldList fieldList;
     private TableList tableList;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,8 +76,7 @@ public class NewTableController implements Initializable{
           }
           temp = temp.getNext();
         }
-        System.out.println("Tabla creada");
-        DBList.printAll();
+        reloadTree();
 
     }
 
@@ -118,8 +117,6 @@ public class NewTableController implements Initializable{
             txtPK.clear();
             txtRequired.getSelectionModel().clearSelection();
             txtDefault.clear();
-
-            System.out.println("Row added");
         }
         else {
             lblAlert.setText("Datos insuficientes");

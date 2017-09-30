@@ -44,7 +44,7 @@ public class Main extends Application {
         root.setCenter(paneOne);
 
         Scene scene = new Scene(root, 740, 480);
-        scene.getStylesheets().add("GUI/flat_ui.css");
+        scene.getStylesheets().add("GUI/css/flat_ui.css");
 
         primaryStage.setScene(scene);
         primaryStage.show();

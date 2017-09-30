@@ -1,5 +1,6 @@
 package GUI;
 
+import data.files.FieldList;
 import data.files.RowMaker;
 import data.structures.generics.Node;
 import data.structures.generics.SimpleList;
@@ -93,7 +94,6 @@ public class TableView {
 
         //Button
         Button addButton = new Button("Añadir");
-        addButton.setOnAction(e -> addButtonClicked());
         Button deleteButton = new Button("Eliminar");
         deleteButton.setOnAction(e -> deleteButtonClicked());
 
@@ -104,30 +104,18 @@ public class TableView {
         return hBox;
     }
     //Add button clicked
-    private void addButtonClicked(){
-        RowMaker column = new RowMaker();
-        column.setColumnName(nameInput.getText());
-        column.setColumnType(typeInput.getText());
-        column.setColumnFK(fkInput.getText());
-        column.setColumnPK(pkInput.getText());
-        String req = (String)requiredChoice.getValue();
-        if (req == "true") {
-            column.setColumnRequired(true);
-        }else {
-            column.setColumnRequired(false);
-        }
-        column.setColumnDefault(defaultInput.getText());
+    private void addButtonClicked(String name, String type, String fk, String pk, boolean required, String def, FieldList fieldList){
+        RowMaker rowMaker = new RowMaker();
+        rowMaker.setColumnName(name);
+        rowMaker.setColumnType(type);
+        rowMaker.setColumnFK(fk);
+        rowMaker.setColumnPK(pk);
 
-        list.addNode(column);
-        table.getItems().add(column);
-        nameInput.clear();
-        typeInput.clear();
-        fkInput.clear();
-        pkInput.clear();
-        requiredChoice.getSelectionModel().clearSelection();
-        defaultInput.clear();
-        list.printList();
-        System.out.println("-----------");
+        rowMaker.setColumnRequired(required);
+
+        rowMaker.setColumnDefault(def);
+
+        fieldList.getObjectList().addNode(rowMaker);
     }
 
     //Delete button clicked

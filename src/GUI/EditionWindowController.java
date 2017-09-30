@@ -1,14 +1,12 @@
 package GUI;
 
-import com.sun.rowset.internal.Row;
+import GUI.treeView.EditCell;
 import data.files.*;
 import data.structures.generics.*;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.TableView;
@@ -19,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditionWindowController implements Initializable{
+public class EditionWindowController extends WindowUtility implements Initializable{
 
     SimpleList<RowMaker> rows;
     CircularDoubleList<FieldList> tables;
@@ -29,7 +27,7 @@ public class EditionWindowController implements Initializable{
     private TextField  txtName, txtFK, txtPK, txtDefault;
 
     @FXML
-    private Button btnCreateTable, btnAdd, btnDelete;
+    private Button btnAdd, btnDelete;
 
     @FXML
     private TableView<RowMakerTable> tblViewRows;
@@ -37,21 +35,23 @@ public class EditionWindowController implements Initializable{
     @FXML
     private ChoiceBox<String> txtRequired, choiceBD,  txtType,tblChoice;
 
-    DBList list = new DBList();
-    TableList tableList;
-    RowMaker rowMaker;
-    FieldList fieldList;
+    @FXML
+    private Label lblAlert;
+
+    private TableList tableList;
+    private RowMaker rowMaker;
+    private FieldList fieldList;
+
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DoubleNode<TableList> temp = list.getDbList().getHead();
-        for (int i = 0; i < list.getDbList().getSize(); i++){
+        DoubleNode<TableList> temp = DBList.getDbList().getHead();
+        for (int i = 0; i < DBList.getDbList().getSize(); i++){
             choiceBD.getItems().add(temp.getValue().getFileName());
-            System.out.println(choiceBD.getItems());
             temp = temp.getNext();
         }
-        choiceBD.setValue(choiceBD.getItems().get(0));
         choiceBD.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> selectDB(choiceBD.getValue())));
         txtRequired.getItems().addAll("true", "false");
         txtRequired.setValue("true");
@@ -62,9 +62,9 @@ public class EditionWindowController implements Initializable{
     @FXML
     private void selectDB(String db){
         tblChoice.getItems().clear();
-        DoubleNode<TableList> temp = list.getDbList().getHead();
-        for (int i = 0; i < list.getDbList().getSize(); i++){
-            if (temp.getValue().getFileName() == db){
+        DoubleNode<TableList> temp = DBList.getDbList().getHead();
+        for (int i = 0; i < DBList.getDbList().getSize(); i++){
+            if (temp.getValue().getFileName().equals(db)){
                 currentDB = temp;
                 tables = temp.getValue().getFileList();
                 DoubleNode<FieldList> temp2 = temp.getValue().getFileList().getHead();
@@ -74,18 +74,25 @@ public class EditionWindowController implements Initializable{
                     temp2 = temp2.getNext();
                 }
                 tblChoice.setValue(tblChoice.getItems().get(0));
-                addTable(list.getDbList().getHead().getValue().getFileList().getHead().getValue().getObjectList());
+                addTable(DBList.getDbList().getHead().getValue().getFileList().getHead().getValue().getObjectList());
                 break;
             }
             temp = temp.getNext();
         }
     }
 
+    private boolean checkValid(){
+        return !txtName.getText().isEmpty() && !txtType.getValue().isEmpty() &&
+                !txtFK.getText().isEmpty() && !txtPK.getText().isEmpty() &&
+                !txtRequired.getValue().isEmpty() && !txtDefault.getText().isEmpty() &&
+                !tblChoice.getValue().isEmpty();
+    }
+
     private void selectTable(String tbl){
         //tblViewRows.getItems().clear();
         DoubleNode<FieldList> temp = tables.getHead();
         for (int i = 0; i < tables.getSize(); i++){
-            if(temp.getValue().getFileName() == tbl){
+            if(temp.getValue().getFileName().equals(tbl)){
                 rows = temp.getValue().getObjectList();
                 tblViewRows.setItems(getRow(rows));
             }
@@ -93,47 +100,42 @@ public class EditionWindowController implements Initializable{
         }
     }
 
-    private void createTable( ) throws IOException {
-        DBList dbList = new DBList();
-
-        //tableList.setFileName(txtTableName.getText());
-        tableList.setFileDB(choiceBD.getValue());
-        System.out.println("choiceDB value: " + choiceBD.getValue());
-        dbList.getDbList().addNodeToTheTail(tableList);
-
-        System.out.println("Table creada");
-        /*//posible error
-        URL treeMenuUrl = getClass().getResource("treeMenu.fxml");
-        TreeView<String> treeMenu = FXMLLoader.load(treeMenuUrl);
-        MainWindow.getRoot().setLeft(treeMenu);*/
-    }
 
     @FXML
-    private void btnCreateTable_click() throws IOException {
-        createTable();
+    private void btnDelete_click(){
+
     }
 
     @FXML
     private void btnAdd_click(){
-        rowMaker = new RowMaker();
-        rowMaker.setColumnName(txtName.getText());
-        rowMaker.setColumnType(txtType.getValue());
-        rowMaker.setColumnFK(txtFK.getText());
-        rowMaker.setColumnPK(txtPK.getText());
-        if (txtRequired.getSelectionModel().getSelectedItem() == "true")
-            rowMaker.setColumnRequired(true);
-        else
-            rowMaker.setColumnRequired(false);
-        rowMaker.setColumnDefault(txtDefault.getText());
-        fieldList = new FieldList(tableList.getFileName(), tableList.getFileName(), tableList.getFileDB());
+            if(checkValid()) {
+                lblAlert.setText("");
 
-        //tblViewRows.getItems().add(rowMaker);
-        txtName.clear();
-        txtFK.clear();
-        txtPK.clear();
-        txtRequired.getSelectionModel().clearSelection();
-        txtDefault.clear();
-        System.out.println("Row added");
+                RowMaker rowMaker = new RowMaker();
+                rowMaker.setColumnName(txtName.getText());
+                rowMaker.setColumnType(txtType.getValue());
+                rowMaker.setColumnFK(txtFK.getText());
+                rowMaker.setColumnPK(txtPK.getText());
+                if (txtRequired.getSelectionModel().getSelectedItem().equals("true"))
+                    rowMaker.setColumnRequired(true);
+                else
+                    rowMaker.setColumnRequired(false);
+                rowMaker.setColumnDefault(txtDefault.getText());
+
+                fieldList.getObjectList().addNode(rowMaker);
+                addTable(fieldList.getObjectList());
+
+                txtName.clear();
+                txtType.getSelectionModel().clearSelection();
+                txtFK.clear();
+                txtPK.clear();
+                txtRequired.getSelectionModel().clearSelection();
+                txtDefault.clear();
+            }
+            else {
+                lblAlert.setText("Datos insuficientes");
+
+        }
 
     }
 

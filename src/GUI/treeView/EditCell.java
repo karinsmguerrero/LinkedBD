@@ -1,4 +1,4 @@
-package GUI;
+package GUI.treeView;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

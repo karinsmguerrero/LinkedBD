@@ -1,5 +1,6 @@
-package GUI;
+package GUI.treeView;
 
+import GUI.contextMenu.MyContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TextFieldTreeCell;

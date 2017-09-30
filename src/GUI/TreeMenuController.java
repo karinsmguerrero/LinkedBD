@@ -1,5 +1,8 @@
 package GUI;
 
+import GUI.contextMenu.MyContextMenu;
+import GUI.treeView.CustomTreeCell;
+import GUI.treeView.TreeMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -41,6 +44,10 @@ public class TreeMenuController implements Initializable{
 
     public TreeView<String> getTreeMenu(){
         return treeMenu;
+    }
+
+    public void loadTree(){
+        loadTreeItems();
     }
 
 
