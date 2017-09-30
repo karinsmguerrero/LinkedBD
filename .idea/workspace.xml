@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/EditCell.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/converter/MyBooleanConverter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/files/Commit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/files/RowMakerTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/EditionWindowController.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/EditionWindowController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MainWindow.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MainWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MenuBarController.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MenuBarController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MyContextMenu.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MyContextMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/NewBDController.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/NewBDController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/NewTableController.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/NewTableController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/TreeMenu.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/TreeMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/TreeMenuController$1.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/TreeMenuController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/TreeMenuController.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/TreeMenuController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/DBList.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/DBList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/FieldList.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/FieldList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/FileManager.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/FileManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/JsonManager.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/JsonManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/TableList.class" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/data/files/TableList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/EditionWindow.fxml" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/EditionWindow.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MenuBar.fxml" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/MenuBar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/flat_ui.css" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/flat_ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/newTableWindow.fxml" afterPath="$PROJECT_DIR$/out/production/LinkedBD_KMG/GUI/newTableWindow.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/EditionWindow.fxml" afterPath="$PROJECT_DIR$/src/GUI/EditionWindow.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/EditionWindowController.java" afterPath="$PROJECT_DIR$/src/GUI/EditionWindowController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MenuBar.fxml" afterPath="$PROJECT_DIR$/src/GUI/MenuBar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MenuBarController.java" afterPath="$PROJECT_DIR$/src/GUI/MenuBarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MyContextMenu.java" afterPath="$PROJECT_DIR$/src/GUI/MyContextMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/NewTableController.java" afterPath="$PROJECT_DIR$/src/GUI/NewTableController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/NewTableWindow.fxml" afterPath="$PROJECT_DIR$/src/GUI/NewTableWindow.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/TreeMenu.java" afterPath="$PROJECT_DIR$/src/GUI/TreeMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/TreeMenuController.java" afterPath="$PROJECT_DIR$/src/GUI/TreeMenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/flat_ui.css" afterPath="$PROJECT_DIR$/src/GUI/flat_ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/DBList.java" afterPath="$PROJECT_DIR$/src/data/files/DBList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/FieldList.java" afterPath="$PROJECT_DIR$/src/data/files/FieldList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/FileManager.java" afterPath="$PROJECT_DIR$/src/data/files/FileManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/JsonManager.java" afterPath="$PROJECT_DIR$/src/data/files/JsonManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/files/TableList.java" afterPath="$PROJECT_DIR$/src/data/files/TableList.java" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -620,7 +580,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="369952000" />
+    <option name="totallyTimeSpent" value="370157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
